@@ -1,7 +1,7 @@
-<template lang="html">
+<template>
 
-  <section class="src-components-front-almuerzo">
-    <h1>src-components-front-almuerzo Component</h1>
+  <section class="src-components-front-desayuno">
+    <h1>DESAYUNO</h1>
   </section>
 
 </template>
@@ -9,7 +9,7 @@
 <script lang="js">
 
   export default  {
-    name: 'src-components-front-almuerzo',
+    name: 'src-components-front-desayuno',
     props: [],
     mounted () {
 
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped lang="css">
-  .src-components-front-almuerzo {
+  .src-components-front-desayuno {
 
   }
 </style>

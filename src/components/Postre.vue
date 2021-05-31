@@ -1,7 +1,7 @@
-<template lang="html">
+<template>
 
-  <section class="src-components-front-cena">
-    <h1>src-components-front-cena Component</h1>
+  <section class="src-components-front-postre">
+    <h1>src-components-front-postre Component</h1>
   </section>
 
 </template>
@@ -9,7 +9,7 @@
 <script lang="js">
 
   export default  {
-    name: 'src-components-front-cena',
+    name: 'src-components-front-postre',
     props: [],
     mounted () {
 
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped lang="css">
-  .src-components-front-cena {
+  .src-components-front-postre {
 
   }
 </style>

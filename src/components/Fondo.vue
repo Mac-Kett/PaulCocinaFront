@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
 
   <section class="src-components-front-fondo">
     <div class="banner text-center d-block">
