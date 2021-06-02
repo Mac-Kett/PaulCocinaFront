@@ -14,25 +14,38 @@
       </div>
     </div>
     <!--Jumbotron-->
+    <div v-for="(categoria, index) in categorias" :key="index">
+      <h1 class="pb-4 mb-4 font-italic border-bottom">
+        {{ categoria }}
+      </h1>
+      <!--****************************************************************-->
+      <!-- FALTA DIFERENCIAR LAS COMIDAS EN CATEGORIA-->
+      <!--****************************************************************-->
 
-    <!-- https://www.digitalocean.com/community/tutorials/how-to-use-vue-js-and-axios-to-display-data-from-an-api-->
-    <div class="card-deck" v-for="(comida, index) in comidas" :key="index">
-      <div class="card mb-3 h-md-250">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img :src="comida.foto" class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-primary">{{
-                comida.sobreTitulo
-              }}</strong>
-              <h3 class="mb-0">{{ comida.titulo }}</h3>
-              <div class="mb-1 text-muted">{{ comida.titulo }}</div>
-              <p class="card-text mb-auto">
-                {{ comida.body }}
-              </p>
-              <a :href="comida.url" class="stretched-link">Continue reading</a>
+      <!--****************************************************************-->
+      <!-- FALTA usar el componente card y enviarle la informacion -->
+      <!--****************************************************************-->
+
+      <div class="card-deck" v-for="(comida, index) in comidas" :key="index">
+        <div class="card mb-3 h-md-250">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img :src="comida.foto" class="card-img" alt="..." />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <strong class="d-inline-block mb-2 text-primary">{{
+                  comida.sobreTitulo
+                }}</strong>
+                <h3 class="mb-0">{{ comida.titulo }}</h3>
+                <div class="mb-1 text-muted">{{ comida.titulo }}</div>
+                <p class="card-text mb-auto">
+                  {{ comida.body }}
+                </p>
+                <a :href="comida.url" class="stretched-link"
+                  >Continue reading</a
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -56,6 +69,7 @@
       return {
         url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas',
         comidas : [],
+        categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }
     },
     //carga la tabla desde el arranque
