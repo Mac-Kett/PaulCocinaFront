@@ -1,26 +1,28 @@
 <template>
   <div id="app">
+    
     <Fondo/>
-    <Navbar />
+    <!--<SearchBar/>-->
+    <Navbar/>
     <router-view></router-view>
-
-    <div>
-      <Footer/>
-    </div>
+    <AppFooter/>
+    
   </div>
 </template>
 
 <script>
-import Navbar from './components/Front/Navbar.vue'
-import Fondo from './components/Front/Fondo.vue'
-import Footer from './components/Front/Footer.vue'
+//import SearchBar from './components/SearchBar.vue'
+import Navbar from './components/Navbar.vue'
+import Fondo from './components/Fondo.vue'
+import AppFooter from './components/AppFooter.vue'
 
 export default {
   name: 'App',
   components: {
+    //SearchBar,
     Navbar,
     Fondo,
-    Footer
+    AppFooter  
   }
 }
 </script>
@@ -34,5 +36,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;*/
+
 }
 </style>
