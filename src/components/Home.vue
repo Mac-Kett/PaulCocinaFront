@@ -27,7 +27,8 @@
       <!--****************************************************************-->
 
       <div class="card-deck" v-for="(comida, index) in comidas" :key="index">
-        <Card
+        <!-- :name = index-->
+        <Card 
           :foto="comida.foto"
           :sobreTitulo="comida.sobreTitulo"
           :titulo="comida.titulo"
@@ -47,7 +48,7 @@ import Card from './Card.vue'
   export default  {
     name: 'src-components-home',
     components: {
-      "card": Card,
+      "Card": Card,
     },
     props: [],
     mounted () {
