@@ -22,6 +22,7 @@ export const router = new VueRouter({
         { path: '/cena', component: Cena },
         { path: '/postre', component: Postre },
         { path: '/recetaSimple', component: RecetaSimple },
+        { path: '/receta/:id', component: RecetaSimple },
         { path: '/card', component: Card },
         { path: '/sobremi', component: Sobremi },    
     ]

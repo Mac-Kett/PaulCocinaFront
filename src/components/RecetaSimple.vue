@@ -54,8 +54,16 @@
     },
     data () {
       return {
-
+        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        comida : []
       }
+    },
+    //carga la tabla desde el arranque
+    created: function() {
+      this.axios.get(`${this.url}${this.$route.params.id}`).then(res => {
+      this.comida = res.data;
+      console.log(`${this.url}${this.$route.params.id}`)
+      });
     },
     methods: {
 
