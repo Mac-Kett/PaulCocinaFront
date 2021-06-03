@@ -1,13 +1,12 @@
 <template>
-  <section class="src-components-categoria">
+  <section class="src-components-desayuno">
+    <h1>Desayuno</h1>
     <!--****************************************************************-->
     <!--FALTA CONVERTIR A VUE TODA LA CLASE-->
     <!--Deberia poder usarse como plantilla para reproducir todas las categorias dentro del Navbar -->
     <!--****************************************************************-->
-    <!--
-      <h1>{{categoria.nombre}}</h1>
-      <Card>
-      
+    <!--      
+      <Card>      
       Se tiene que pasar los items de cada receta
       </Card>-->
   </section>
@@ -17,7 +16,7 @@
 //import Card from './Card.vue'
 
   export default  {
-    name: 'src-components-categoria',
+    name: 'src-components-desayuno',
     props: [],
     mounted () {
       //Card
@@ -45,6 +44,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-categoria {
+.src-components-desayuno {
 }
 </style>
