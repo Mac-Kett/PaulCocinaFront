@@ -28,13 +28,14 @@
 
       <div class="card-deck" v-for="(comida, index) in comidas" :key="index">
         <Card
+          :id="comida.index"
           :foto="comida.foto"
           :sobreTitulo="comida.sobreTitulo"
           :titulo="comida.titulo"
           :fecha="comida.fecha"
           :body="comida.body"
           :url="comida.url"
-        ></Card>
+        />
       </div>
     </div>
   </section>
@@ -47,7 +48,7 @@ import Card from './Card.vue'
   export default  {
     name: 'src-components-home',
     components: {
-      "card": Card,
+      Card,
     },
     props: [],
     mounted () {
@@ -55,7 +56,7 @@ import Card from './Card.vue'
     },
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas',
+        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
         comidas : [],
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }
@@ -64,6 +65,7 @@ import Card from './Card.vue'
     created: function() {
       this.axios.get(this.url).then(res => {
       this.comidas = res.data;
+      console.log(this.comidas)
       });
     },
     methods: {
