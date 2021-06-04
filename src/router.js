@@ -9,6 +9,7 @@ import Cena from './components/Cena.vue'
 import Postre from './components/Postre.vue'
 import Card from './components/Card.vue'
 import Sobremi from './components/Sobremi.vue'
+import Formulario from './components/CheckoutForm/index.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,7 @@ export const router = new VueRouter({
         { path: '/recetaSimple', component: RecetaSimple },
         { path: '/receta/:id', component: RecetaSimple },
         { path: '/card', component: Card },
-        { path: '/sobremi', component: Sobremi },    
+        { path: '/sobremi', component: Sobremi },
+        { path: '/formulario', component: Formulario },    
     ]
 })

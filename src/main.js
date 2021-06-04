@@ -8,6 +8,7 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { router } from './router'
 import './httpAxios'
+import './form'
 
 new Vue({
   router,
