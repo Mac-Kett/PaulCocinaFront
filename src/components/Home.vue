@@ -26,8 +26,8 @@
       <!-- FALTA usar el componente card y enviarle la informacion -->
       <!--****************************************************************-->
 
-      <div class="card-deck" v-for="(comida, index) in comidas" :key="index">
-        <Card
+        <Card v-for="comida in comidas"
+          :key="comida.index"
           :id="comida.index"
           :foto="comida.foto"
           :sobreTitulo="comida.sobreTitulo"
@@ -36,7 +36,6 @@
           :body="comida.body"
           :url="comida.url"
         />
-      </div>
     </div>
   </section>
 </template>
