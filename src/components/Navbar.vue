@@ -60,9 +60,10 @@
             </router-link>
           </li>
         </ul>
-
+        <!--****************************************************************-->
         <!-- TODO sumarle search dentro de la navbar (componente hijo dentro de componente padre)
         <SearchBar v-on:query-change="querySearch"/>-->
+        <!--****************************************************************-->
       </div>
     </nav>
     <!-- NavBar -->

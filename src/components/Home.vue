@@ -21,21 +21,17 @@
       <!--****************************************************************-->
       <!-- FALTA DIFERENCIAR LAS COMIDAS EN CATEGORIA-->
       <!--****************************************************************-->
-
-      <!--****************************************************************-->
-      <!-- FALTA usar el componente card y enviarle la informacion -->
-      <!--****************************************************************-->
-
-        <Card v-for="comida in comidas"
-          :key="comida.index"
-          :id="comida.index"
-          :foto="comida.foto"
-          :sobreTitulo="comida.sobreTitulo"
-          :titulo="comida.titulo"
-          :fecha="comida.fecha"
-          :body="comida.body"
-          :url="comida.url"
-        />
+      <Card
+        v-for="comida in comidas"
+        :key="comida.index"
+        :id="comida.index"
+        :foto="comida.foto"
+        :sobreTitulo="comida.sobreTitulo"
+        :titulo="comida.titulo"
+        :fecha="comida.fecha"
+        :body="comida.body"
+        :url="comida.url"
+      />
     </div>
   </section>
 </template>

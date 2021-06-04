@@ -2,13 +2,21 @@
   <section class="src-components-desayuno">
     <h1>Desayuno</h1>
     <!--****************************************************************-->
-    <!--FALTA CONVERTIR A VUE TODA LA CLASE-->
-    <!--Deberia poder usarse como plantilla para reproducir todas las categorias dentro del Navbar -->
+    <!-- FALTA hacer funcion que solo muestre comida de esta categoria  -->
     <!--****************************************************************-->
-    <!--      
-      <Card>      
-      Se tiene que pasar los items de cada receta
-      </Card>-->
+    <!--         
+      <Card
+        v-for="comida in comidas"
+        :key="comida.index"
+        :id="comida.index"
+        :foto="comida.foto"
+        :sobreTitulo="comida.sobreTitulo"
+        :titulo="comida.titulo"
+        :fecha="comida.fecha"
+        :body="comida.body"
+        :url="comida.url"
+      />
+    </div>-->
   </section>
 </template>
 
@@ -23,7 +31,9 @@
     },
     data () {
       return {
+        //****************************************************************
         url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas', //despues con que reemplazamos aca???
+        //****************************************************************
         comidas : [],
 
       }
