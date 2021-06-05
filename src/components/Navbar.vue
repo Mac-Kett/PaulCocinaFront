@@ -25,7 +25,7 @@
           </li>
 
           <li class="nav-item">
-            <router-link to="/desayuno">
+            <router-link to="/recetas/desayuno">
               <a class="nav-link btn-danger text-white mr-1" href="#"
                 >Desayuno</a
               >
@@ -33,7 +33,7 @@
           </li>
 
           <li class="nav-item">
-            <router-link to="/almuerzo">
+            <router-link to="/recetas/almuerzo">
               <a class="nav-link btn-danger text-white mr-1" href="#"
                 >Almuezo</a
               >
@@ -41,13 +41,13 @@
           </li>
 
           <li class="nav-item">
-            <router-link to="/cena">
+            <router-link to="/recetas/cena">
               <a class="nav-link btn-danger text-white mr-1" href="#">Cena</a>
             </router-link>
           </li>
 
           <li class="nav-item">
-            <router-link to="/postre">
+            <router-link to="/recetas/postre">
               <a class="nav-link btn-danger text-white mr-1" href="#">Postre</a>
             </router-link>
           </li>
@@ -60,7 +60,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/formulario">
+            <router-link to="/checkout">
               <a class="nav-link btn-danger text-white mr-1" href="#"
                 >Formulario</a
               >

@@ -23,7 +23,7 @@
         <!--FALTA HACER BOTON Y CONECTARLO A LISTADO DE PRODUCTOS EN CARRITO-->
         <!--****************************************************************-->
         <button
-          v-on:click="addProducto(comida)"
+          v-on:click="addProducto()"
           class="btn btn-primary mt-auto"
         >
           Agregar a carrito
@@ -62,10 +62,15 @@
     created: function() {
       this.axios.get(`${this.url}${this.$route.params.id}`).then(res => {
       this.comida = res.data;
-      console.log(`${this.url}${this.$route.params.id}`)
+      //console.log(`${this.url}${this.$route.params.id}`)
       });
     },
     methods: {
+      addProducto(){
+        this.$router.push({path:'/checkout',query:{receta: this.comida.titulo,precio:'10'}});
+
+        //this.$router.push({path: `/checkout/`, query:{receta: ${}})
+      },
 
     },
     computed: {

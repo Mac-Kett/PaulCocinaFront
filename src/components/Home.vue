@@ -47,8 +47,10 @@ import Card from './Card.vue'
     },
     props: [],
     mounted () {
-
-    },
+      this.axios.get(this.url).then(res => {
+      this.comidas = res.data}); 
+      },
+    
     data () {
       return {
         url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
@@ -56,15 +58,7 @@ import Card from './Card.vue'
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }
     },
-    //carga la tabla desde el arranque
-    created: function() {
-      this.axios.get(this.url).then(res => {
-      this.comidas = res.data;
-      console.log(this.comidas)
-      });
-    },
     methods: {
-
     },
     computed: {
     }
