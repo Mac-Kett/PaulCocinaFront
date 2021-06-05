@@ -6,10 +6,12 @@ import RecetaSimple from './components/RecetaSimple.vue'
 import Sobremi from './components/Sobremi.vue'
 import Formulario from './components/CheckoutForm/index.vue'
 import Categoria from './components/Categoria.vue'
+import Admin from './components/Admin.vue'
+import Login from './components/Login.vue'
 
 Vue.use(VueRouter)
 
-export const router = new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes : [
         { path: '/', redirect:'/home' },
@@ -18,5 +20,30 @@ export const router = new VueRouter({
         { path: '/checkout', component: Formulario },    
         { path: '/recetas/:categoria', component: Categoria },
         { path: '/sobremi', component: Sobremi },    
+        { path: '/login', component: Login },    
+        { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
     ]
 })
+
+router.beforeEach((to,from,next) =>{
+    if (to.meta.requiresAuth){
+            //ACA IRIA LA LOGICA DE DONDE GUARDEMOS EL USER. DESP DE INICIAR SESION EN LA API//
+            //                      si no tiene user, va al login                            //
+            //            si tiene user, y es el admin, se muestra el dashboard              //
+        
+        //por ahora dejo esto para redireccione directo al login.
+        next({
+            path: "/login"
+        })
+
+        /*if (!store.user){
+            next({
+                path: "/home"
+            })
+    }
+    else {next()}*/
+    }else {
+        next();
+    }
+});
+export {router};

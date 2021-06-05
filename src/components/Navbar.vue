@@ -54,16 +54,19 @@
 
           <li class="nav-item">
             <router-link to="/sobremi">
-              <a class="nav-link btn-danger text-white mr-1" href="#"
-                >Sobre mi</a
-              >
+              <a class="nav-link btn-danger text-white mr-1" href="#">Sobre mi</a>
             </router-link>
           </li>
+          <!-- creo que más adelante el formulario ya no iría acá. se alcanzaria solo mediante una compra -->
           <li class="nav-item">
             <router-link to="/checkout">
-              <a class="nav-link btn-danger text-white mr-1" href="#"
-                >Formulario</a
-              >
+              <a class="nav-link btn-danger text-white mr-1" href="#" >Formulario</a>
+            </router-link>
+          </li>
+          <!-- dashboard de admin para manejo de recetas -->
+          <li class="nav-item">
+            <router-link to="/admin">
+              <a class="nav-link btn-danger text-white mr-1" href="#">Admin</a>
             </router-link>
           </li>
         </ul>

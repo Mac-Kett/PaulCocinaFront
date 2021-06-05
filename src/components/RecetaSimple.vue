@@ -12,12 +12,12 @@
         <br />
 
         <div>
-          <h2 class="-title py-3">{{ comida.titulo }}</h2>
+          <h2 class="-title py-3">{{ comida.titulo }}    -     ${{comida.precio}}</h2>
 
-          <p>{{ comida.sobreTitulo }}}</p>
+          <p>{{ comida.sobreTitulo }}</p>
           <hr />
           <h3>Instrucciones</h3>
-          <p>{{ comida.instrucciones }}</p>
+          <p>{{ comida.body }}</p>
         </div>
         <!--****************************************************************-->
         <!--FALTA HACER BOTON Y CONECTARLO A LISTADO DE PRODUCTOS EN CARRITO-->
@@ -34,8 +34,8 @@
         <div class="p-4 mb-3 bg-light rounded">
           <h4 class="font-italic">Ingredientes</h4>
           <ul>
-            <li v-for="(ingrediente, index) in comida" :key="index">
-              {{ comida.ingredientes }}
+            <li v-for="(ingrediente, index) in comida.ingredientes" :key="index">
+              {{ ingrediente }}
             </li>
           </ul>
         </div>
@@ -50,26 +50,24 @@
     name: 'src-components-receta-simple',
     props: [],
     mounted () {
-
+        //carga la tabla desde el arranque usar created o mounted ?
+    //created: function() {
+      this.axios.get(`${this.url}${this.$route.params.id}`).then(res => {
+      this.comida = res.data;
+      });
+    //},
     },
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
         comida : []
       }
     },
-    //carga la tabla desde el arranque
-    created: function() {
-      this.axios.get(`${this.url}${this.$route.params.id}`).then(res => {
-      this.comida = res.data;
-      //console.log(`${this.url}${this.$route.params.id}`)
-      });
-    },
+    
     methods: {
       addProducto(){
-        this.$router.push({path:'/checkout',query:{receta: this.comida.titulo,precio:'10'}});
-
-        //this.$router.push({path: `/checkout/`, query:{receta: ${}})
+        this.$router.push({path:'/checkout',query:{receta: this.comida.titulo,precio: this.comida.precio}});
       },
 
     },

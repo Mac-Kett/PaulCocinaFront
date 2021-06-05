@@ -19,18 +19,20 @@
         {{ categoria }}
       </h1>
       <!--****************************************************************-->
-      <!-- FALTA DIFERENCIAR LAS COMIDAS EN CATEGORIA-->
+      <!--  FALTA acomodar el filtrar para cuando haya categorias reales  -->
       <!--****************************************************************-->
       <Card
-        v-for="comida in comidas"
-        :key="comida.index"
-        :id="comida.index"
+        v-for="comida in filtrarPorCategoria(categoria)"
+        :key="comida.id"
+        :id="comida.id" 
         :foto="comida.foto"
         :sobreTitulo="comida.sobreTitulo"
         :titulo="comida.titulo"
         :fecha="comida.fecha"
         :body="comida.body"
-        :url="comida.url"
+        :precio="comida.precio"
+        :ingredientes="comida.ingredientes"
+        :categoria="comida.categoria"
       />
     </div>
   </section>
@@ -48,21 +50,64 @@ import Card from './Card.vue'
     props: [],
     mounted () {
       this.axios.get(this.url).then(res => {
-      this.comidas = res.data}); 
+      this.comidas = res.data});
       },
-    
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
         comidas : [],
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }
     },
     methods: {
+
+      //------        LOS 3 METODOS DE ABAJO SON SOLO PARA SIMULAR LA CATEGORIA          -----//
+      //------ DESPUES HABRÍA QUE DEJAR SOLO EL DE FILTRAR CON LA LÓGICA CORRESPONDIENTE -----//
+      getCategoria(cat){
+        //este se borra por completo
+            let num;
+            switch (cat) {
+              case "Desayuno":
+                num = 0
+                break;
+              case 'Almuerzo':
+                num = 1
+                break;
+              case 'Cena':
+                num = 2
+                break;
+              case 'Postre':
+                num = 3
+                break;
+              default:
+              num = 0
+              break;
+            }
+            return num;
+      },
+      setCategorias(){
+        //este se borra por completo
+        this.comidas.forEach(comidaAct => {
+            comidaAct.categoria= this.getCategoriaAleatoria()
+          });
+      },
+
+      filtrarPorCategoria(cat){
+        //este debería cambiar el filtro para que matchee con las categorias. actualmente no se puede por el mock.
+          return this.comidas.filter(com =>{
+            let categoria = com.categoria.replace(/\D/g,'');
+            categoria = Math.floor((categoria * 0.3 ) )
+            //console.log(categoria)
+              return categoria == this.getCategoria(cat)
+          }) 
+      }
+        
     },
     computed: {
+
     }
-}
+  }
 </script>
 
 <style scoped lang="css">

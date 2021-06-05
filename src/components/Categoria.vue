@@ -13,6 +13,7 @@
           :fecha="comida.fecha"
           :body="comida.body"
           :url="comida.url"
+          :categoria="comida.categoria"
         />
   </section>
 </template>
@@ -36,7 +37,8 @@ import Card from './Card.vue'
     },
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+         url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
         comidas : [],
         categoria: this.$route.params.categoria
 
@@ -44,11 +46,12 @@ import Card from './Card.vue'
     },
     methods: {
       cargarDatos(){
-        //ToDo llamar al get por categoria
-      this.axios.get(this.url).then(res => {
-      this.comidas = res.data;
-      });
-    },
+          //ToDo llamar al get con filtro por categoria de la API
+        this.axios.get(this.url).then(res => {
+        this.comidas = res.data;
+        });
+      },
+
     },
     computed: {
 
