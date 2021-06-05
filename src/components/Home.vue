@@ -19,18 +19,20 @@
         {{ categoria }}
       </h1>
       <!--****************************************************************-->
-      <!-- FALTA DIFERENCIAR LAS COMIDAS EN CATEGORIA-->
+      <!--  FALTA acomodar el filtrar para cuando haya categorias reales  -->
       <!--****************************************************************-->
       <Card
-        v-for="comida in comidas"
-        :key="comida.index"
-        :id="comida.index"
+        v-for="comida in filtrarPorCategoria(categoria)"
+        :key="comida.id"
+        :id="comida.id" 
         :foto="comida.foto"
         :sobreTitulo="comida.sobreTitulo"
         :titulo="comida.titulo"
         :fecha="comida.fecha"
         :body="comida.body"
-        :url="comida.url"
+        :precio="comida.precio"
+        :ingredientes="comida.ingredientes"
+        :categoria="comida.categoria"
       />
     </div>
   </section>
@@ -48,21 +50,30 @@ import Card from './Card.vue'
     props: [],
     mounted () {
       this.axios.get(this.url).then(res => {
-      this.comidas = res.data}); 
+      this.comidas = res.data});
       },
-    
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
         comidas : [],
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }
     },
     methods: {
+
+      filtrarPorCategoria(cat){
+          //filtro para cada categoria
+          return this.comidas.filter(com =>{
+              return com.categoria === cat
+          }) 
+      }
+        
     },
     computed: {
+
     }
-}
+  }
 </script>
 
 <style scoped lang="css">

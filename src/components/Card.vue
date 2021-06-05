@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <div class="card-body">
             <strong class="d-inline-block mb-2 text-primary">
-              {{ sobreTitulo }}
+              {{ sobreTitulo }} - {{categoria}}
             </strong>
             <h3 class="mb-0">{{ titulo }}</h3>
             <div class="mb-1 text-muted">{{ fecha }}</div>
@@ -27,7 +27,7 @@
 
   export default  {
     name: 'src-components-card',
-    props: ['id','src','foto','sobreTitulo','titulo','fecha','body','url'],
+    props: ['id','src','foto','sobreTitulo','titulo','fecha','body','precio','ingredientes','categoria'],
     mounted () {
 
     },

@@ -1,18 +1,20 @@
 <template>
-  <section class="src-components-categoria">
+  <section class="src-components-categoria container">
     
       <h1 class="pb-4 mb-4 font-italic border-bottom">
-        {{ categoria.toUpperCase() }}
+        {{ categoria }}
       </h1>
           <Card v-for="comida in comidas"
-          :key="comida.index"
-          :id="comida.index"
-          :foto="comida.foto"
-          :sobreTitulo="comida.sobreTitulo"
-          :titulo="comida.titulo"
-          :fecha="comida.fecha"
-          :body="comida.body"
-          :url="comida.url"
+            :key="comida.id"
+            :id="comida.id" 
+            :foto="comida.foto"
+            :sobreTitulo="comida.sobreTitulo"
+            :titulo="comida.titulo"
+            :fecha="comida.fecha"
+            :body="comida.body"
+            :precio="comida.precio"
+            :ingredientes="comida.ingredientes"
+            :categoria="comida.categoria"
         />
   </section>
 </template>
@@ -30,25 +32,30 @@ import Card from './Card.vue'
       this.cargarDatos()
     },
     beforeRouteUpdate (to, from, next) {
-      this.categoria = to.params.categoria
+      this.categoria = this.primerLetraMayus(to.params.categoria)
       this.cargarDatos()
       next()
     },
     data () {
       return {
-        url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
+         url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
         comidas : [],
-        categoria: this.$route.params.categoria
+        categoria: this.primerLetraMayus(this.$route.params.categoria)
 
       }
     },
     methods: {
       cargarDatos(){
-        //ToDo llamar al get por categoria
-      this.axios.get(this.url).then(res => {
-      this.comidas = res.data;
-      });
-    },
+          //ToDo llamar al get con filtro por categoria de la API
+        this.axios.get(`${this.url}/?categoria=${this.categoria}`).then(res => {
+        this.comidas = res.data;
+        });
+      },
+      primerLetraMayus(str){
+        return str.charAt(0).toUpperCase() + str.slice(1)
+      }
+
     },
     computed: {
 
