@@ -1,5 +1,5 @@
 <template>
-  <section class="src-components-categoria">
+  <section class="src-components-categoria container">
     
       <h1 class="pb-4 mb-4 font-italic border-bottom">
         {{ categoria.toUpperCase() }}

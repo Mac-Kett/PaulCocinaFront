@@ -1,6 +1,5 @@
 <template>
   <section class="src-components-login">
-    <h1>Login</h1>
     <!--- FORMULARIO ASI NOMAS DONDE DESPUÉS IRÍA EL LOGIN.   -->
   <div class="container my-4">
     <div class="jumbotron shadow-sm p-3 mb-5 bg-white rounded">
