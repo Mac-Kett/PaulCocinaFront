@@ -1,5 +1,5 @@
 <template>
-  <section class="src-components-receta-simple">
+  <section class="src-components-receta-simple container">
     <!--****************************************************************-->
     <!--FALTA CONECTAR componente con datos recibidos de Mongo/Backend-->
     <!--****************************************************************-->
