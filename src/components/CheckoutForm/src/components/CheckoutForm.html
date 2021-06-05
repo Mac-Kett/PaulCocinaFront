@@ -1,0 +1,232 @@
+<section class="src-components-checkout-form">
+  <!--- FORMULARIO QUE FALTA RELLENAR -->
+  <div class="container my-4">
+    <div class="jumbotron shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="row my-4 mx-3">
+
+        <!--Bloque izquierdo de Tu compra -->
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text">Tu Compra</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+            <!--FALTA agregar funcion para que cuente los productos-->
+          </h4>
+          <!--FALTA agregar funcion para que cargue todos los productos-->
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Producto</h6>
+              </div>
+              <span class="text-muted">$12</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Second product</h6>
+              </div>
+              <span class="text-muted">$8</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Third item</h6>
+              </div>
+              <span class="text-muted">$5</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong>$20</strong>
+              <!--FALTA agregar funcion para mostrar total-->
+            </li>
+          </ul>
+        </div>
+
+        <!--Bloque de Datos de envio -->
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Datos para envio</h4>
+          <!--EMPIEZA VUE-FORM-->
+          <vue-form :state="formState" @submit.prevent="enviar()">
+            <div class="row">
+
+              <!-- campo nombre -->
+              <validate tag="div" class="col-md-6 mb-3">
+                <label for="nombre"> Nombre </label>
+                <input type="text" id="nombre" name="nombre" class="form-control" autocomplete="off"
+                  v-model.trim="formData.nombre" required :minlength="nombreLengthMin" />
+                <field-messages name="nombre" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div slot="minlength" class="alert alert-danger mt-1">
+                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+
+              <!-- campo apellido -->
+              <validate tag="div" class="col-md-6 mb-3">
+                <label for="apellido"> Apellido </label>
+                <input type="text" id="apellido" name="apellido" class="form-control" autocomplete="off"
+                  v-model.trim="formData.apellido" required :minlength="nombreLengthMin" />
+                <field-messages name="apellido" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div slot="minlength" class="alert alert-danger mt-1">
+                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+            </div>
+
+            <!-- campo direccion -->
+            <validate tag="div" class="mb-3">
+              <label for="direccion"> Direccion </label>
+              <input type="text" id="direccion" name="direccion" class="form-control" autocomplete="off"
+                v-model.trim="formData.direccion" required :minlength="nombreLengthMin" />
+              <!--v-model.trim="formData.direccion" deberia ir???-->
+              <field-messages name="direccion" show="$dirty">
+                <div slot="required" class="alert alert-danger mt-1">
+                  Campo requerido
+                </div>
+                <div slot="minlength" class="alert alert-danger mt-1">
+                  Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                </div>
+              </field-messages>
+            </validate>
+
+            <!-- campo altura -->
+            <div class="row">
+              <validate tag="div" class="col-md-5 mb-3">
+                <label for="altura"> Altura </label>
+                <input type="number" id="altura" name="altura" class="form-control" autocomplete="off"
+                  v-model.number="formData.altura" required :minlength="nombreLengthMin" :maxlength="alturaMax"/>
+                <!--v-model.trim="formData.altura" deberia ir???-->
+                <field-messages name="altura" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div slot="minlength" class="alert alert-danger mt-1">
+                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                  </div>
+                  <div v-if="formData.altura.length == alturaMax" class="alert alert-warning mt-1">
+                    Este campo debe tener como máximo {{ alturaMax }} caracteres
+                  </div> 
+                </field-messages>
+              </validate>
+
+              <!-- campo piso -->
+              <validate tag="div" class="col-md-4 mb-3">
+                <label for="piso"> Piso </label>
+                <input type="number" id="piso" name="piso" class="form-control" autocomplete="off"
+                v-model.number="formData.piso" required :minlength="nombreLengthMin" />
+                <!--v-model.trim="formData.piso" deberia ir???-->
+                <field-messages name="piso" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div slot="minlength" class="alert alert-danger mt-1">
+                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                  </div>
+                  <div v-if="formData.piso.length == alturaMax" class="alert alert-warning mt-1">
+                    Este campo debe tener como máximo {{ alturaMax }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+              
+
+              <!-- campo codigo postal -->
+              <validate tag="div" class="col-md-3 mb-3">
+                <label for="codigoPostal"> Codigo Postal </label>
+                <input type="number" id="codigoPostal" name="codigoPostal" class="form-control" autocomplete="off"
+                v-model.number="formData.codigoPostal" required :maxlength="codigoPostalMax" />
+                <!--v-model.trim="formData.codigoPostal" deberia ir???-->
+                <field-messages name="codigoPostal" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div v-if="formData.codigoPostal.length < codigoPostalMax" class="alert alert-warning mt-1">
+                    Este campo debe tener {{ codigoPostalMax }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+            </div>
+
+            <h4 class="mb-3">Pago</h4>
+            <div class="row">
+
+              <!-- campo Nombre en tarjeta de credito -->
+              <validate tag="div" class="col-md-6 mb-3">
+                <label for="nombreTarjeta"> Nombre en Tarjeta de Credito </label>
+                <input type="text" id="nombreTarjeta" name="nombreTarjeta" class="form-control" autocomplete="off"
+                  v-model.trim="formData.nombreTarjeta" required :minlength="nombreLengthMin" />
+                <small class="text-muted">Como aparece en la tarjeta de credito</small>
+                <field-messages name="nombreTarjeta" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div slot="minlength" class="alert alert-danger mt-1">
+                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+
+              <!-- campo numero de tarjeta de credito -->
+              <!-- FALTA CAMBIARLO A TIPO NUMERO -->
+              <validate tag="div" class="col-md-6 mb-3">
+                <label for="numeroTarjeta"> Numero de Tarjeta de Credito </label>
+                <input type="number" id="numeroTarjeta" name="numeroTarjeta" class="form-control" autocomplete="off"
+                  v-model.number="formData.numeroTarjeta" required :maxlenght="numeroTarjetaMax" />
+                <field-messages name="numeroTarjeta" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>        
+                  <div v-if="formData.numeroTarjeta.length < numeroTarjetaMax" class="alert alert-warning mt-1">
+                    Este campo debe tener {{ numeroTarjetaMax }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+            </div>
+
+            <div class="row">
+              <!-- campo FECHA de expiracion -->
+              <validate tag="div" class="col-md-3 mb-3">
+                <label for="fechaExpiracion"> Fecha de expiracion </label>
+                <input type="number" id="fechaExpiracion" name="fechaExpiracion" class="form-control" autocomplete="off"
+                  v-model.number="formData.fechaExpiracion" required :maxlenght="fechaExpiracionMax"/>
+                <small class="text-muted">Como formato mmaa</small>
+                <field-messages name="fechaExpiracion" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div v-if="formData.fechaExpiracion.length < fechaExpiracionMax" class="alert alert-warning mt-1">
+                    Este campo debe tener {{ fechaExpiracionMax }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+
+              <!-- campo NRO CVV -->
+              <validate tag="div" class="col-md-3 mb-3">
+                <label for="nroCVV"> CVV </label>
+                <input type="number" id="nroCVV" name="nroCVV" class="form-control" autocomplete="off"
+                  v-model.number="formData.nroCVV" required :maxlength="nroCVVMax" />
+                <small class="text-muted">Ultimos 3 números al dorso</small>
+                <field-messages name="nroCVV" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                  <div v-if="formData.nroCVV.length < nroCVVMax" class="alert alert-warning mt-1">
+                    Este campo debe tener {{ nroCVVMax }} caracteres
+                  </div>
+                </field-messages>
+              </validate>
+            </div>
+            <hr class="mb-4" />
+            <button class="btn btn-primary btn-lg btn-block" :disabled="formState.$invalid" type="submit">
+              Realizar compra
+            </button>
+          </vue-form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

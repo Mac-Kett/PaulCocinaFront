@@ -59,6 +59,13 @@
               >
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/formulario">
+              <a class="nav-link btn-danger text-white mr-1" href="#"
+                >Formulario</a
+              >
+            </router-link>
+          </li>
         </ul>
         <!--****************************************************************-->
         <!-- TODO sumarle search dentro de la navbar (componente hijo dentro de componente padre)
