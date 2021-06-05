@@ -13,8 +13,6 @@ export default {
       numeroTarjetaMax:16,
       fechaExpiracionMax: 4,
       nroCVVMax:3,
-
-
     }
   },
   computed: {
@@ -36,6 +34,8 @@ export default {
         numeroTarjeta: '',
         fechaExpiracion: '',
         nroCVV: '',
+        producto: this.$route.query.receta,
+        precio: this.$route.query.precio,
 
       }
     },

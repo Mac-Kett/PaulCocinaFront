@@ -11,14 +11,15 @@
             <span class="badge badge-secondary badge-pill">3</span>
             <!--FALTA agregar funcion para que cuente los productos-->
           </h4>
-          <!--FALTA agregar funcion para que cargue todos los productos-->
+          <!--trayendo data desde un query-->
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">Producto</h6>
+                <h6 class="my-0"> {{ formData.producto }} </h6>
               </div>
-              <span class="text-muted">$12</span>
+              <span class="text-muted">${{ formData.precio }}</span>
             </li>
+            <!--FALTA  demás productos para cuando haya carrito-->
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">Second product</h6>
