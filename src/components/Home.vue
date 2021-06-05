@@ -62,44 +62,10 @@ import Card from './Card.vue'
     },
     methods: {
 
-      //------        LOS 3 METODOS DE ABAJO SON SOLO PARA SIMULAR LA CATEGORIA          -----//
-      //------ DESPUES HABRÍA QUE DEJAR SOLO EL DE FILTRAR CON LA LÓGICA CORRESPONDIENTE -----//
-      getCategoria(cat){
-        //este se borra por completo
-            let num;
-            switch (cat) {
-              case "Desayuno":
-                num = 0
-                break;
-              case 'Almuerzo':
-                num = 1
-                break;
-              case 'Cena':
-                num = 2
-                break;
-              case 'Postre':
-                num = 3
-                break;
-              default:
-              num = 0
-              break;
-            }
-            return num;
-      },
-      setCategorias(){
-        //este se borra por completo
-        this.comidas.forEach(comidaAct => {
-            comidaAct.categoria= this.getCategoriaAleatoria()
-          });
-      },
-
       filtrarPorCategoria(cat){
-        //este debería cambiar el filtro para que matchee con las categorias. actualmente no se puede por el mock.
+          //filtro para cada categoria
           return this.comidas.filter(com =>{
-            let categoria = com.categoria.replace(/\D/g,'');
-            categoria = Math.floor((categoria * 0.3 ) )
-            //console.log(categoria)
-              return categoria == this.getCategoria(cat)
+              return com.categoria === cat
           }) 
       }
         
