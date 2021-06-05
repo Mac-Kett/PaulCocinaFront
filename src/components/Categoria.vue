@@ -5,15 +5,16 @@
         {{ categoria.toUpperCase() }}
       </h1>
           <Card v-for="comida in comidas"
-          :key="comida.index"
-          :id="comida.index"
-          :foto="comida.foto"
-          :sobreTitulo="comida.sobreTitulo"
-          :titulo="comida.titulo"
-          :fecha="comida.fecha"
-          :body="comida.body"
-          :url="comida.url"
-          :categoria="comida.categoria"
+            :key="comida.id"
+            :id="comida.id" 
+            :foto="comida.foto"
+            :sobreTitulo="comida.sobreTitulo"
+            :titulo="comida.titulo"
+            :fecha="comida.fecha"
+            :body="comida.body"
+            :precio="comida.precio"
+            :ingredientes="comida.ingredientes"
+            :categoria="comida.categoria"
         />
   </section>
 </template>
