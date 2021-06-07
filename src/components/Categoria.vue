@@ -8,12 +8,11 @@
             :key="comida.id"
             :id="comida.id" 
             :foto="comida.foto"
-            :sobreTitulo="comida.sobreTitulo"
+            :descripcion="comida.descripcion"
             :titulo="comida.titulo"
-            :fecha="comida.fecha"
-            :body="comida.body"
             :precio="comida.precio"
             :ingredientes="comida.ingredientes"
+            :instrucciones="comida.instrucciones"
             :categoria="comida.categoria"
         />
   </section>
@@ -57,7 +56,6 @@ import Card from './Card.vue'
       primerLetraMayus(str){
         return str.charAt(0).toUpperCase() + str.slice(1)
       }
-
     },
     computed: {
 

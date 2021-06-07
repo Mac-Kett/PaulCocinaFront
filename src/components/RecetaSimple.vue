@@ -14,10 +14,10 @@
         <div>
           <h2 class="-title py-3">{{ comida.titulo }}    -     ${{comida.precio}}</h2>
 
-          <p>{{ comida.sobreTitulo }}</p>
+          <p>{{ comida.descripcion }}</p>
           <hr />
           <h3>Instrucciones</h3>
-          <p>{{ comida.body }}</p>
+          <p>{{ comida.instrucciones }}</p>
         </div>
         <!--****************************************************************-->
         <!--FALTA HACER BOTON Y CONECTARLO A LISTADO DE PRODUCTOS EN CARRITO-->
