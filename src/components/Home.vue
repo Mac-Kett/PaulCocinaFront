@@ -23,8 +23,8 @@
       <!--****************************************************************-->
       <Card
         v-for="comida in filtrarPorCategoria(categoria)"
-        :key="comida.id"
-        :id="comida.id" 
+        :key="comida._id"
+        :id="comida._id" 
         :foto="comida.foto"
         :sobreTitulo="comida.sobreTitulo"
         :titulo="comida.titulo"
@@ -41,7 +41,6 @@
 <script lang="js">
 import Card from './Card.vue'
 
-
   export default  {
     name: 'src-components-home',
     components: {
@@ -49,13 +48,17 @@ import Card from './Card.vue'
     },
     props: [],
     mounted () {
-      this.axios.get(this.url).then(res => {
-      this.comidas = res.data});
+              console.log(this.url)
+      this.axios.get(`${this.url}/recetas/`).then(res => {
+        console.log(`${this.url}/recetas/`)
+            this.comidas = res.data});
       },
     data () {
       return {
         //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-        url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
+        //url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
+        //url: 'http://localhost:8080/recetas/',
+        url: process.env.VUE_APP_API_URL,
         comidas : [],
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
       }

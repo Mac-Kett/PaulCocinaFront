@@ -52,7 +52,7 @@
     mounted () {
         //carga la tabla desde el arranque usar created o mounted ?
     //created: function() {
-      this.axios.get(`${this.url}${this.$route.params.id}`).then(res => {
+      this.axios.get(`${this.url}/recetas/${this.$route.params.id}`).then(res => {
       this.comida = res.data;
       });
     //},
@@ -60,8 +60,9 @@
     data () {
       return {
         //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-        url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
-        comida : []
+        //url: ' http://localhost:8080/recetas/',
+        url: process.env.VUE_APP_API_URL,
+        comida : [],
       }
     },
     
