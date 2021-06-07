@@ -26,12 +26,11 @@
         :key="comida._id"
         :id="comida._id" 
         :foto="comida.foto"
-        :sobreTitulo="comida.sobreTitulo"
+        :descripcion="comida.descripcion"
         :titulo="comida.titulo"
-        :fecha="comida.fecha"
-        :body="comida.body"
         :precio="comida.precio"
         :ingredientes="comida.ingredientes"
+        :instrucciones="comida.instrucciones"
         :categoria="comida.categoria"
       />
     </div>
