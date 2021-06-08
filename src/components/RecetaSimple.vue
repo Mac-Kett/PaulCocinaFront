@@ -68,7 +68,8 @@
     
     methods: {
       addProducto(){
-        this.$router.push({path:'/checkout',query:{receta: this.comida.titulo,precio: this.comida.precio}});
+        this.$store.dispatch('addProduct',this.comida)
+        this.$router.push({path:'/cart'});
       },
 
     },

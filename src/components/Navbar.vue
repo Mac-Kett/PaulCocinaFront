@@ -57,17 +57,17 @@
               <a class="nav-link btn-danger text-white mr-1" href="#">Sobre mi</a>
             </router-link>
           </li>
-          <!-- creo que más adelante el formulario ya no iría acá. se alcanzaria solo mediante una compra -->
-          <li class="nav-item">
-            <router-link to="/checkout">
-              <a class="nav-link btn-danger text-white mr-1" href="#" >Formulario</a>
-            </router-link>
-          </li>
           <!-- dashboard de admin para manejo de recetas -->
           <li class="nav-item">
             <router-link to="/admin">
               <a class="nav-link btn-danger text-white mr-1" href="#">Admin</a>
             </router-link>
+          </li>
+          <li class="nav-item">
+              <router-link to="/cart"  class="button is-warning">   <a class="nav-link btn-danger text-white mr-1" href="#">
+                  Carrito
+                  <span class="badge badge-light"> {{cartQuantity}}</span></a>
+              </router-link>            
           </li>
         </ul>
         <!--****************************************************************-->
@@ -82,7 +82,6 @@
 
 <script lang="js">
   //import SearchBar from './SearchBar.vue';
-
   export default  {
     name: 'src-components-front-navbar',
     components: {
@@ -101,7 +100,11 @@
 
     },
     computed: {
-
+      cartQuantity() {
+        return this.$store.state.carrito.length
+      }
+    },
+    created() {
     }
 }
 </script>
