@@ -48,8 +48,8 @@ import Card from './Card.vue'
     props: [],
     mounted () {
               console.log(this.url)
-      this.axios.get(`${this.url}/recetas/`).then(res => {
-        console.log(`${this.url}/recetas/`)
+      this.axios.get(`${this.url}recetas/`).then(res => {
+        console.log(`${this.url}recetas/`)
             this.comidas = res.data});
       },
     data () {

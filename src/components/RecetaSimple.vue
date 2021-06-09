@@ -52,7 +52,7 @@
     mounted () {
         //carga la tabla desde el arranque usar created o mounted ?
     //created: function() {
-      this.axios.get(`${this.url}/recetas/${this.$route.params.id}`).then(res => {
+      this.axios.get(`${this.url}recetas/${this.$route.params.id}`).then(res => {
       this.comida = res.data;
       });
     //},

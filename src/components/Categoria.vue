@@ -38,18 +38,14 @@ import Card from './Card.vue'
     data () {
       return {
         //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-         url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas',
-        //url: process.env.VUE_APP_API_URL,
-
-        comidas : [],
-        categoria: this.primerLetraMayus(this.$route.params.categoria)
-
+        //url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas',
+        url: process.env.VUE_APP_API_URL
       }
     },
     methods: {
       cargarDatos(){
           //ToDo llamar al get con filtro por categoria de la API
-        this.axios.get(`${this.url}?categoria=${this.categoria}`).then(res => {
+        this.axios.get(`${this.url}recetas/byCategory/${this.categoria}`).then(res => {
         this.comidas = res.data;
         });
       },
