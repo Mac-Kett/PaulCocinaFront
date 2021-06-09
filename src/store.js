@@ -5,9 +5,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        carrito : []
+        carrito : [],
+        pedido : {
+            nombre: '',
+            apellido: '',
+            direccion: '',
+            altura: '',
+            piso: '',
+            codigoPostal: '',
+            nombreTarjeta: '',
+            numeroTarjeta: '',
+            fechaExpiracion: '',
+            nroCVV: '',
+            localidad:'',
+            provincia:'',
+            pais:'',
+            productos: [],
+            total: 0,
+            estado:'NUEVO'
+        }
     },
     actions : {
+        clearPedido({commit}) {
+            commit('clearPedido')
+        },
         getCartItems({commit}) {
             commit()
             return this.state.carrito;
@@ -17,6 +38,9 @@ export default new Vuex.Store({
         },
         addProduct({commit},product) {
             commit('addProduct',product);
+        },
+        addItemsAPedido({commit}){
+            commit('addItemsAPedido')
         }
     },
     getters: {
@@ -25,6 +49,30 @@ export default new Vuex.Store({
         }
     },    
     mutations : {
+        addItemsAPedido(state) {
+            state.pedido.productos = state.carrito
+            state.pedido.total = state.pedido.productos.reduce((t, {total}) => t + total,0)
+        },
+        clearPedido(state) {
+            state.pedido = {
+                nombre: '',
+                apellido: '',
+                direccion: '',
+                altura: '',
+                piso: '',
+                codigoPostal: '',
+                nombreTarjeta: '',
+                numeroTarjeta: '',
+                fechaExpiracion: '',
+                nroCVV: '',
+                localidad:'',
+                provincia:'',
+                pais:'',
+                productos: [],
+                total: 0,
+                estado:'NUEVO'
+            }
+        },
         removeAllCartItems(state) {
             state.carrito = []
         },
