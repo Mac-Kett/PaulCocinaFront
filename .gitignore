@@ -3,7 +3,7 @@ node_modules
 /dist
 
 
-# env files
+# dotenv environment variables file
 .env
 
 # Log files
