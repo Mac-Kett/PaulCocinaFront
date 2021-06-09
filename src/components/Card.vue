@@ -13,7 +13,7 @@
             <h3 class="mb-0">{{ titulo }}</h3>
             <div class="mb-1 text-muted">{{ categoria }}</div>
             <p class="card-text mb-auto">
-              {{ instrucciones }}
+              {{ trimInstrucciones }}
             </p>
             <a @click="goToCard" class="stretched-link">Continue reading</a>
           </div>
@@ -29,7 +29,7 @@
     name: 'src-components-card',
     props: ['id','foto','descripcion','titulo','instrucciones','precio','ingredientes','categoria'],
     mounted () {
-        this.trimInstrucciones();
+        //this.trimInstrucciones();
     },
     data () {
       return {
@@ -40,13 +40,16 @@
       goToCard() {
         this.$router.push({ path: `/receta/${this.id}` })
       },
-      trimInstrucciones(){
+      /*trimInstrucciones(){
         return this.instrucciones = `${this.instrucciones.substring(0, this.trimLength)}...`
-      }
+      }*/
 
     },
     computed: {
-
+      trimInstrucciones() {
+            let instr = `${this.instrucciones.substring(0, this.trimLength)}...`
+            return instr
+        }
     }
 }
 </script>
