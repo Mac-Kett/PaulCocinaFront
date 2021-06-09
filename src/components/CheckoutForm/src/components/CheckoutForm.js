@@ -16,7 +16,15 @@ export default {
     }
   },
   computed: {
-
+    cartQuantity() {
+      return this.$store.state.carrito.length
+    },
+    cartItems() {
+      return this.$store.state.carrito
+    },
+    cartTotal() {
+      return this.$store.getters.getCartTotal
+    }    
   },
   mounted () {
 
