@@ -3,9 +3,21 @@ Es una página pensada para un cocinero llamado Paul, quien realiza sus recetas 
 
 # Casos de uso - Listado de funcionalidades
 
+Como Usuario necesito autenticarme para poder ingresar al sistema.
+Como Admin necesito poder gestionar las Recetas, con la finalidad de darles de alta, baja o modificarlos.
+Como Usuario, necesito poder agregar recetas al carrito de compras, con la finalidad de poder comprar.
+Como Admin necesito poder procesar la compra con la finalidad de realizarla o cancelarla.
+
 # Listado de actores/roles
 
+Admin
+Clientes
+
 # Listado de entidades principales
+
+Pedidos
+Recetas
+Ingredientes
 
 ## Para tener nuestro proyecto en su computadora
 ```
@@ -24,3 +36,9 @@ npm run serve
 
 # Listado de endpoints de la API
 
+/users/
+/users/:id
+/recetas/
+/recetas/:id
+/recetas//byCategory/:categoria'
+/pedidos/
