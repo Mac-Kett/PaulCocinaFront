@@ -9,6 +9,7 @@ import Categoria from './components/Categoria.vue'
 import Admin from './components/Admin.vue'
 import Login from './components/Login.vue'
 import CartList from './components/cart/Cart_List.vue';
+import Payment from './components/Payment.vue';
 
 
 Vue.use(VueRouter)
@@ -23,6 +24,7 @@ const router = new VueRouter({
         { path: '/recetas/:categoria', component: Categoria },
         { path: '/sobremi', component: Sobremi },    
         { path: '/login', component: Login },    
+        { path: '/payment', component: Payment },    
         { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
         {path: '/cart', component: CartList},
     ]
