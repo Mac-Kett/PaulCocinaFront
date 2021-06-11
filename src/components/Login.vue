@@ -9,13 +9,14 @@
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Log In</h4>
           <!--EMPIEZA VUE-FORM-->
+          <h1>{{ mensaje }}</h1>
           <vue-form :state="formState" @submit.prevent="enviar()">
             <div class="row">
 
               <!-- campo username -->
               <validate tag="div" class="col-md-6 mb-3">
                 <label for="username"> Username </label>
-                <input type="text" id="username" name="username" class="form-control" autocomplete="off"
+                <input type="text" id="username" name="username" class="form-control" autocomplete="on"
                   v-model.trim="formData.username" required :minlength="nombreLengthMin" />
                 <field-messages name="username" show="$dirty">
                   <div slot="required" class="alert alert-danger mt-1">
@@ -30,7 +31,7 @@
               <!-- campo password -->
               <validate tag="div" class="col-md-6 mb-3">
                 <label for="password"> Password </label>
-                <input type="text" id="password" name="password" class="form-control" autocomplete="off"
+                <input type="password" id="password" name="password" class="form-control" autocomplete="on"
                   v-model.trim="formData.password" required :minlength="nombreLengthMin" />
                 <field-messages name="password" show="$dirty">
                   <div slot="required" class="alert alert-danger mt-1">
@@ -65,10 +66,10 @@
     },
     data () {
       return {
-      formData : this.getInicialData(),
-      formState : {},
-      nombreLengthMin : 2,
-
+        formData : this.getInicialData(),
+        formState : {},
+        nombreLengthMin : 2,
+        mensaje:""
       }
     },
     methods: {
@@ -81,6 +82,18 @@
       },
       enviar() {
       //login con la API
+      this.axios.post(process.env.VUE_APP_API_URL+"users/login",{ usuario: this.formData.username,contraseña: this.formData.password}).then((res)=>{
+        console.log(res)
+        this.mensaje=""
+        this.$store.dispatch('login',this.formData.username,true)
+        this.$router.push({
+          path: '/admin'
+        })        
+      }).catch((error)=>{
+        console.log(error)
+        this.mensaje="Usuario o Contraseña equivocados"
+      })
+
       console.log({...this.formData})
       this.formData = this.getInicialData()
       this.formState._reset()
