@@ -2,6 +2,8 @@
   <section class="src-components-admin">
     <!--      COMPONENTE PLACEHOLDER PARA EL DASHBOARD DE ADMIN      -->
     <h1>Pedidos</h1>
+    <button class="btn btn-success btn-sm ml-1" type="button" @click="mostrarIngredientes()">Editar Ingredientes</button>
+    <button class="btn btn-warning btn-sm ml-1" type="button" @click="editarRecetas()">Editar Recetas</button>
 
     <div v-if="pedidos.length==0" class="alert alert-warning mt-1">
         No se encontraron pedidos
@@ -60,6 +62,16 @@
         this.$router.push({
           name: 'pedidodetalle', params: { id:pedido._id, pedido: pedido }
         })        
+      },
+      mostrarIngredientes() {
+        this.$router.push({
+          path: '/ingredientes'
+        })       
+      },
+      editarRecetas() {
+        this.$router.push({
+          path: '/editrecetas'
+        })       
       }
     },
     computed: {
