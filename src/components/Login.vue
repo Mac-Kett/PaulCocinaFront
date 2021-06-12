@@ -15,7 +15,7 @@
 
               <!-- campo username -->
               <validate tag="div" class="col-md-6 mb-3">
-                <label for="username"> Username </label>
+                <label for="username"> E-mail </label>
                 <input type="text" id="username" name="username" class="form-control" autocomplete="on"
                   v-model.trim="formData.username" required :minlength="nombreLengthMin" />
                 <field-messages name="username" show="$dirty">
@@ -30,7 +30,7 @@
               <br>
               <!-- campo password -->
               <validate tag="div" class="col-md-6 mb-3">
-                <label for="password"> Password </label>
+                <label for="password"> Contraseña </label>
                 <input type="password" id="password" name="password" class="form-control" autocomplete="on"
                   v-model.trim="formData.password" required :minlength="nombreLengthMin" />
                 <field-messages name="password" show="$dirty">
@@ -45,7 +45,7 @@
             </div>
             <hr class="mb-4" />
             <button class="btn btn-primary btn-lg btn-block" :disabled="formState.$invalid" type="submit">
-              Log In
+              Enviar
             </button>
           </vue-form>
           
