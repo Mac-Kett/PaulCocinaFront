@@ -10,6 +10,7 @@ import Admin from './components/Admin.vue'
 import Login from './components/Login.vue'
 import CartList from './components/cart/Cart_List.vue';
 import Payment from './components/Payment.vue';
+import PedidoDetalle from './components/PedidoDetalle.vue'
 import store from './store.js'
 
 Vue.use(VueRouter)
@@ -26,6 +27,7 @@ const router = new VueRouter({
         { path: '/login', component: Login },    
         { path: '/payment', component: Payment },    
         { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
+        { path: '/pediodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
         {path: '/cart', component: CartList},
     ]
 })
