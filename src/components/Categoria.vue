@@ -5,8 +5,8 @@
         {{ categoria }}
       </h1>
           <Card v-for="comida in comidas"
-            :key="comida.id"
-            :id="comida.id" 
+            :key="comida._id"
+            :id="comida._id" 
             :foto="comida.foto"
             :descripcion="comida.descripcion"
             :titulo="comida.titulo"

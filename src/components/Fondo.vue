@@ -2,7 +2,7 @@
 
   <section class="src-components-front-fondo">
     <div class="banner text-center d-block">
-      <img class="banner-logo" src="@/assets/logo.png">
+      <a href="/"><img class="banner-logo" src="@/assets/logo.png"></a>
     </div>
     
 

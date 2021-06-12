@@ -22,7 +22,13 @@ export default new Vuex.Store({
             pais:'',
             productos: [],
             total: 0,
-            estado:'NUEVO'
+            estado:'NUEVO',
+            paymentStatus:null
+        },
+        usuario: {
+            esAdmin:false,
+            nombre:"",
+            loginOk:false
         }
     },
     actions : {
@@ -41,6 +47,9 @@ export default new Vuex.Store({
         },
         addItemsAPedido({commit}){
             commit('addItemsAPedido')
+        },
+        login({commit},username,isadmin){
+            commit('login',username,isadmin)
         }
     },
     getters: {
@@ -49,6 +58,11 @@ export default new Vuex.Store({
         }
     },    
     mutations : {
+        login(state,username,isadmin){
+            state.usuario.esAdmin=isadmin
+            state.usuario.nombre=username
+            state.usuario.loginOk=true
+        },
         addItemsAPedido(state) {
             state.pedido.productos = state.carrito
             state.pedido.total = state.pedido.productos.reduce((t, {total}) => t + total,0)
@@ -72,6 +86,7 @@ export default new Vuex.Store({
                 total: 0,
                 estado:'NUEVO'
             }
+            state.carrito = []
         },
         removeAllCartItems(state) {
             state.carrito = []

@@ -15,7 +15,7 @@
             <p class="card-text mb-auto">
               {{ trimInstrucciones }}
             </p>
-            <a @click="goToCard" class="stretched-link">Continue reading</a>
+            <button @click="goToCard" class="btn btn-primary mt-auto" >Ver Receta</button>
           </div>
         </div>
       </div>

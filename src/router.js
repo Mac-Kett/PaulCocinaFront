@@ -9,7 +9,11 @@ import Categoria from './components/Categoria.vue'
 import Admin from './components/Admin.vue'
 import Login from './components/Login.vue'
 import CartList from './components/cart/Cart_List.vue';
-
+import Payment from './components/Payment.vue';
+import PedidoDetalle from './components/PedidoDetalle.vue'
+import Ingredientes from './components/Ingredientes.vue'
+import EditRecetas from './components/EditRecetas.vue'
+import store from './store.js'
 
 Vue.use(VueRouter)
 
@@ -23,7 +27,11 @@ const router = new VueRouter({
         { path: '/recetas/:categoria', component: Categoria },
         { path: '/sobremi', component: Sobremi },    
         { path: '/login', component: Login },    
+        { path: '/payment', component: Payment },    
         { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
+        { path: '/pediodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
+        { path: '/ingredientes', component: Ingredientes },    
+        { path: '/editrecetas', component: EditRecetas },    
         {path: '/cart', component: CartList},
     ]
 })
@@ -35,9 +43,13 @@ router.beforeEach((to,from,next) =>{
             //            si tiene user, y es el admin, se muestra el dashboard              //
         
         //por ahora dejo esto para redireccione directo al login.
-        next({
-            path: "/login"
-        })
+        if (store.state.usuario.loginOk) {
+            next()
+        } else {
+            next({
+                path: "/login"
+            })
+        }
 
         /*if (!store.user){
             next({
