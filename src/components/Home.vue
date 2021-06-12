@@ -64,8 +64,10 @@ import Card from './Card.vue'
 
       filtrarPorCategoria(cat){
           //filtro para cada categoria
+          let i = 0
           return this.comidas.filter(com =>{
-              return com.categoria === cat
+              if (com.categoria === cat) i++
+              return com.categoria === cat && i<=2
           }) 
       }
         
