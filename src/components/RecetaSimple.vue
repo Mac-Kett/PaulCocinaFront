@@ -12,7 +12,9 @@
         <br />
 
         <div>
-          <h2 class="-title py-3">{{ comida.titulo }}    -     ${{comida.precio}}</h2>
+          <h2 class="-title py-3">
+            {{ comida.titulo }} - ${{ comida.precio }}
+          </h2>
 
           <p>{{ comida.descripcion }}</p>
           <hr />
@@ -22,10 +24,7 @@
         <!--****************************************************************-->
         <!--FALTA HACER BOTON Y CONECTARLO A LISTADO DE PRODUCTOS EN CARRITO-->
         <!--****************************************************************-->
-        <button
-          v-on:click="addProducto()"
-          class="btn btn-primary mt-auto"
-        >
+        <button v-on:click="addProducto()" class="btn btn-primary mt-auto">
           Agregar a carrito
         </button>
       </div>
@@ -34,7 +33,10 @@
         <div class="p-4 mb-3 bg-light rounded">
           <h4 class="font-italic">Ingredientes</h4>
           <ul>
-            <li v-for="(ingrediente, index) in comida.ingredientes" :key="index">
+            <li
+              v-for="(ingrediente, index) in comida.ingredientes"
+              :key="index"
+            >
               {{ ingrediente }}
             </li>
           </ul>
@@ -81,5 +83,9 @@
 
 <style scoped lang="css">
 .src-components-receta-simple {
+}
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

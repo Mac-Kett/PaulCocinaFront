@@ -1,20 +1,18 @@
 <template>
   <section class="src-components-categoria container">
-    
-      <h1 class="pb-4 mb-4 font-italic border-bottom">
-        {{ categoria }}
-      </h1>
-          <Card v-for="comida in comidas"
-            :key="comida._id"
-            :id="comida._id" 
-            :foto="comida.foto"
-            :descripcion="comida.descripcion"
-            :titulo="comida.titulo"
-            :precio="comida.precio"
-            :ingredientes="comida.ingredientes"
-            :instrucciones="comida.instrucciones"
-            :categoria="comida.categoria"
-        />
+    <h1>{{ categoria }}</h1>
+    <Card
+      v-for="comida in comidas"
+      :key="comida._id"
+      :id="comida._id"
+      :foto="comida.foto"
+      :descripcion="comida.descripcion"
+      :titulo="comida.titulo"
+      :precio="comida.precio"
+      :ingredientes="comida.ingredientes"
+      :instrucciones="comida.instrucciones"
+      :categoria="comida.categoria"
+    />
   </section>
 </template>
 
@@ -64,5 +62,9 @@ import Card from './Card.vue'
 
 <style scoped lang="css">
 .src-components-categoria {
+}
+
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

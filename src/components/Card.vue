@@ -15,7 +15,9 @@
             <p class="card-text mb-auto">
               {{ trimInstrucciones }}
             </p>
-            <button @click="goToCard" class="btn btn-primary mt-auto" >Ver Receta</button>
+            <button @click="goToCard" class="btn btn-primary mt-auto">
+              Ver Receta
+            </button>
           </div>
         </div>
       </div>
@@ -56,5 +58,8 @@
 
 <style scoped lang="css">
 .src-components-card {
+}
+h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

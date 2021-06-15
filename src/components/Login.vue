@@ -1,58 +1,78 @@
 <template>
   <section class="src-components-login">
-    <!--- FORMULARIO ASI NOMAS DONDE DESPUÉS IRÍA EL LOGIN.   -->
-  <div class="container my-4">
-    <div class="jumbotron shadow-sm p-3 mb-5 bg-white rounded">
-      <div class="row my-4 mx-3">
+    <!--- FORMULARIO ASI NOMAS DONDE DESPUÉS IRÍA EL LOGIN.    -->
+    <div class="container my-3">
+      <div class="jumbotron shadow-sm p-3 mb-5 bg-white rounded mx-auto">
+        <div class="row my-4 mx-3">
+          <!--Bloque de Datos de envio -->
+          <div class="col-md-12 mx-auto">
+            <h4 class="mb-3">Log In</h4>
+            <!--EMPIEZA VUE-FORM-->
+            <vue-form :state="formState" @submit.prevent="enviar()">
+              <div class="row">
+                <!-- campo username -->
+                <validate tag="div" class="col-md-6 mb-3">
+                  <label for="username"> Email </label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    autocomplete="on"
+                    v-model.trim="formData.username"
+                    required
+                    :minlength="nombreLengthMin"
+                  />
+                  <field-messages name="username" show="$dirty">
+                    <div slot="required" class="alert alert-danger mt-1">
+                      Campo requerido
+                    </div>
+                    <div slot="minlength" class="alert alert-danger mt-1">
+                      Este campo requiere como mínimo
+                      {{ nombreLengthMin }} caracteres
+                    </div>
+                  </field-messages>
+                </validate>
+                <br />
+                <!-- campo password -->
+                <validate tag="div" class="col-md-6 mb-3">
+                  <label for="password"> Contraseña </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    autocomplete="on"
+                    v-model.trim="formData.password"
+                    required
+                    :minlength="nombreLengthMin"
+                  />
+                  <field-messages name="password" show="$dirty">
+                    <div slot="required" class="alert alert-danger mt-1">
+                      Campo requerido
+                    </div>
+                    <div slot="minlength" class="alert alert-danger mt-1">
+                      Este campo requiere como mínimo
+                      {{ nombreLengthMin }} caracteres
+                    </div>
+                  </field-messages>
+                </validate>
+              </div>
+              <p class="font-italic">{{ mensaje }}</p>
+              <hr class="mb-4" />
 
-        <!--Bloque de Datos de envio -->
-        <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Log In</h4>
-          <!--EMPIEZA VUE-FORM-->
-          <h1>{{ mensaje }}</h1>
-          <vue-form :state="formState" @submit.prevent="enviar()">
-            <div class="row">
-
-              <!-- campo username -->
-              <validate tag="div" class="col-md-6 mb-3">
-                <label for="username"> E-mail </label>
-                <input type="text" id="username" name="username" class="form-control" autocomplete="on"
-                  v-model.trim="formData.username" required :minlength="nombreLengthMin" />
-                <field-messages name="username" show="$dirty">
-                  <div slot="required" class="alert alert-danger mt-1">
-                    Campo requerido
-                  </div>
-                  <div slot="minlength" class="alert alert-danger mt-1">
-                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
-                  </div>
-                </field-messages>
-              </validate>
-              <br>
-              <!-- campo password -->
-              <validate tag="div" class="col-md-6 mb-3">
-                <label for="password"> Contraseña </label>
-                <input type="password" id="password" name="password" class="form-control" autocomplete="on"
-                  v-model.trim="formData.password" required :minlength="nombreLengthMin" />
-                <field-messages name="password" show="$dirty">
-                  <div slot="required" class="alert alert-danger mt-1">
-                    Campo requerido
-                  </div>
-                  <div slot="minlength" class="alert alert-danger mt-1">
-                    Este campo requiere como mínimo {{ nombreLengthMin }} caracteres
-                  </div>
-                </field-messages>
-              </validate>
-            </div>
-            <hr class="mb-4" />
-            <button class="btn btn-primary btn-lg btn-block" :disabled="formState.$invalid" type="submit">
-              Enviar
-            </button>
-          </vue-form>
-          
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                :disabled="formState.$invalid"
+                type="submit"
+              >
+                Enviar
+              </button>
+            </vue-form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
 </template>
 
@@ -107,5 +127,13 @@
 
 <style scoped lang="css">
 .src-components-almuerzo {
+}
+
+.jumbotron {
+  width: 600px;
+}
+
+h4 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

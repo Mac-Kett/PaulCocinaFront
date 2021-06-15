@@ -24,7 +24,7 @@
       <Card
         v-for="comida in filtrarPorCategoria(categoria)"
         :key="comida._id"
-        :id="comida._id" 
+        :id="comida._id"
         :foto="comida.foto"
         :descripcion="comida.descripcion"
         :titulo="comida.titulo"
@@ -83,5 +83,8 @@ import Card from './Card.vue'
 }
 .jumbotron {
   background-image: url(https://cdn.pixabay.com/photo/2017/05/02/18/20/blueberries-2278921_1280.jpg);
+}
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

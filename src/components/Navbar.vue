@@ -1,6 +1,6 @@
 <template>
   <section class="src-components-front-navbar text-center py-3">
-    <nav class="navbar navbar-expand-md navbar-dark bg-info">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <button
         class="navbar-toggler"
         type="button"
@@ -54,26 +54,25 @@
 
           <li class="nav-item">
             <router-link to="/sobremi">
-              <a class="nav-link btn-danger text-white mr-1" href="#">Sobre mi</a>
+              <a class="nav-link btn-danger text-white mr-1" href="#"
+                >Sobre mi</a
+              >
             </router-link>
           </li>
-          <!-- dashboard de admin para manejo de recetas -->
+          <!--El boton del carrito solo se muestra si la cantidad es mayor a cero-->
           <li class="nav-item">
-            <router-link to="/admin">
-              <a class="nav-link btn-danger text-white mr-1" href="#">Admin</a>
+            <router-link to="/cart" class="button is-warning">
+              <a
+                class="nav-link btn-danger text-white mr-1"
+                href="#"
+                v-show="cartQuantity > 0"
+              >
+                Carrito
+                <span class="badge badge-light"> {{ cartQuantity }}</span></a
+              >
             </router-link>
-          </li>
-          <li class="nav-item">
-              <router-link to="/cart"  class="button is-warning">   <a class="nav-link btn-danger text-white mr-1" href="#">
-                  Carrito
-                  <span class="badge badge-light"> {{cartQuantity}}</span></a>
-              </router-link>            
           </li>
         </ul>
-        <!--****************************************************************-->
-        <!-- TODO sumarle search dentro de la navbar (componente hijo dentro de componente padre)
-        <SearchBar v-on:query-change="querySearch"/>-->
-        <!--****************************************************************-->
       </div>
     </nav>
     <!-- NavBar -->
@@ -81,11 +80,9 @@
 </template>
 
 <script lang="js">
-  //import SearchBar from './SearchBar.vue';
   export default  {
     name: 'src-components-front-navbar',
     components: {
-    //SearchBar
     },
     props: [],
     mounted () {
@@ -93,6 +90,7 @@
     },
     data () {
       return {
+        mostrar: true,
 
       }
     },

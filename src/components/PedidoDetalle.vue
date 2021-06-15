@@ -57,7 +57,9 @@
 </script>
 
 <style scoped lang="css">
-  .src-components-pedido-detalle {
-
-  }
+.src-components-pedido-detalle {
+}
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
 </style>
