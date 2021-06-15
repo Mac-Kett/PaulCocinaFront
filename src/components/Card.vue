@@ -7,17 +7,15 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <strong class="d-inline-block mb-2 text-primary">
-              ${{ precio }} - {{ descripcion }}
+            <strong class="d-inline-block mb-2 text-muted font-italic">
+              {{ descripcion }}
             </strong>
             <h3 class="mb-0">{{ titulo }}</h3>
-            <div class="mb-1 text-muted">{{ categoria }}</div>
+            <br />
             <p class="card-text mb-auto">
               {{ trimInstrucciones }}
             </p>
-            <button @click="goToCard" class="btn btn-primary mt-auto">
-              Ver Receta
-            </button>
+            <a @click="goToCard" class="stretched-link"> seguir leyendo... </a>
           </div>
         </div>
       </div>
@@ -31,7 +29,6 @@
     name: 'src-components-card',
     props: ['id','foto','descripcion','titulo','instrucciones','precio','ingredientes','categoria'],
     mounted () {
-        //this.trimInstrucciones();
     },
     data () {
       return {
@@ -42,9 +39,6 @@
       goToCard() {
         this.$router.push({ path: `/receta/${this.id}` })
       },
-      /*trimInstrucciones(){
-        return this.instrucciones = `${this.instrucciones.substring(0, this.trimLength)}...`
-      }*/
 
     },
     computed: {

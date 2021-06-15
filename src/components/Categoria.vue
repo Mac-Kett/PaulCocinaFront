@@ -35,8 +35,6 @@ import Card from './Card.vue'
     },
     data () {
       return {
-        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-        //url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas',
         url: process.env.VUE_APP_API_URL,
         categoria: this.primerLetraMayus(this.$route.params.categoria),
         comidas: []
