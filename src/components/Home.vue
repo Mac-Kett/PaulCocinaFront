@@ -3,14 +3,13 @@
     <!--Jumbotron-->
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
-        <h1 class="display-4 font-italic">Lorem Ipsum</h1>
+        <h1 class="display-4 font-italic">{{ getJumbotron().titulo }}</h1>
         <p class="lead my-3">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {{ getJumbotron().descripcion }}
         </p>
-        <router-link to="/">
-          <a class="text-white font-weight-bold" href="#">Sigue leyendo...</a>
-        </router-link>
+        <a @click="goToCard" class="text-white font-weight-bold">
+          seguir leyendo...
+        </a>
       </div>
     </div>
     <!--Jumbotron-->
@@ -24,7 +23,7 @@
       <Card
         v-for="comida in filtrarPorCategoria(categoria)"
         :key="comida._id"
-        :id="comida._id" 
+        :id="comida._id"
         :foto="comida.foto"
         :descripcion="comida.descripcion"
         :titulo="comida.titulo"
@@ -33,6 +32,8 @@
         :instrucciones="comida.instrucciones"
         :categoria="comida.categoria"
       />
+
+      <br />
     </div>
   </section>
 </template>
@@ -52,16 +53,13 @@ import Card from './Card.vue'
       },
     data () {
       return {
-        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-        //url: 'https://60ad4f1680a61f0017330b61.mockapi.io/comidas/',
-        //url: 'http://localhost:8080/recetas/',
         url: process.env.VUE_APP_API_URL,
         comidas : [],
         categorias:["Desayuno", "Almuerzo", "Cena", "Postre"],
+        recetaJumbo:'',
       }
     },
     methods: {
-
       filtrarPorCategoria(cat){
           //filtro para cada categoria
           let i = 0
@@ -69,11 +67,17 @@ import Card from './Card.vue'
               if (com.categoria === cat) i++
               return com.categoria === cat && i<=2
           }) 
-      }
-        
+      },
+      getJumbotron(){
+        return this.recetaJumbo = this.comidas.find(receta => receta.titulo === 'Crumble de arandanos');
+      },          
+      goToCard() {
+        let id = this.recetaJumbo._id
+        this.$router.push({ path: `/receta/${id}` })
+      },
     },
     computed: {
-
+        
     }
   }
 </script>
@@ -83,5 +87,8 @@ import Card from './Card.vue'
 }
 .jumbotron {
   background-image: url(https://cdn.pixabay.com/photo/2017/05/02/18/20/blueberries-2278921_1280.jpg);
+}
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

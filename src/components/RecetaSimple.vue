@@ -1,45 +1,49 @@
 <template>
-  <section class="src-components-receta-simple container">
-    <!--****************************************************************-->
-    <!--FALTA CONECTAR componente con datos recibidos de Mongo/Backend-->
-    <!--****************************************************************-->
-    <div class="col-md-8 text-center mx-auto d-block py-2">
-      <img :src="comida.foto" class="img-fluid rounded" />
-    </div>
-
-    <div class="row">
-      <div class="col-md-8">
-        <br />
-
-        <div>
-          <h2 class="-title py-3">{{ comida.titulo }}    -     ${{comida.precio}}</h2>
-
-          <p>{{ comida.descripcion }}</p>
-          <hr />
-          <h3>Instrucciones</h3>
-          <p>{{ comida.instrucciones }}</p>
-        </div>
-        <!--****************************************************************-->
-        <!--FALTA HACER BOTON Y CONECTARLO A LISTADO DE PRODUCTOS EN CARRITO-->
-        <!--****************************************************************-->
-        <button
-          v-on:click="addProducto()"
-          class="btn btn-primary mt-auto"
-        >
-          Agregar a carrito
-        </button>
+  <section class="src-components-receta-simple">
+    <div class="container my-5">
+      <div class="col-md-8 text-center mx-auto d-block">
+        <img :src="comida.foto" class="img-fluid rounded" />
       </div>
 
-      <aside class="col-md-4 sobre-mi-sidebar py-5">
-        <div class="p-4 mb-3 bg-light rounded">
-          <h4 class="font-italic">Ingredientes</h4>
-          <ul>
-            <li v-for="(ingrediente, index) in comida.ingredientes" :key="index">
-              {{ ingrediente }}
-            </li>
-          </ul>
+      <div class="row">
+        <div class="col-md-8">
+          <br />
+
+          <div>
+            <h2 class="pt-4">
+              {{ comida.titulo }}
+            </h2>
+            <p>{{ comida.descripcion }}</p>
+            <hr />
+            <h3>Instrucciones</h3>
+            <!---*******************************************************-->
+            <!--FALTA QUE SE SEPARE EN PARAFOS LAS INSTRUCCIONES -->
+            <!---*******************************************************-->
+            <p>{{ comida.instrucciones }}</p>
+            <p class="font-weight-bold">
+              Compra los ingredientes por ${{ comida.precio }}
+            </p>
+          </div>
+          <!-- boton de carrito de compras -->
+          <button v-on:click="addProducto()" class="btn btn-danger mt-auto">
+            Agregar a carrito
+          </button>
         </div>
-      </aside>
+
+        <aside class="col-md-4 sobre-mi-sidebar py-5">
+          <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="font-italic">Ingredientes</h4>
+            <ul>
+              <li
+                v-for="(ingrediente, index) in comida.ingredientes"
+                :key="index"
+              >
+                {{ ingrediente }}
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 </template>
@@ -59,8 +63,6 @@
     },
     data () {
       return {
-        //url: 'https://60aac34c66f1d000177732f0.mockapi.io/comidas/', //despues se pasa la url de heroku
-        //url: ' http://localhost:8080/recetas/',
         url: process.env.VUE_APP_API_URL,
         comida : [],
       }
@@ -69,7 +71,6 @@
     methods: {
       addProducto(){
         this.$store.dispatch('addProduct',this.comida)
-        this.$router.push({path:'/cart'});
       },
 
     },
@@ -81,5 +82,9 @@
 
 <style scoped lang="css">
 .src-components-receta-simple {
+}
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

@@ -1,41 +1,36 @@
 <template>
   <div id="app">
-    
-    <Fondo/>
-    <!--<SearchBar/>-->
-    <Navbar/>
+    <Fondo />
+    <!-----***************************************************-->
+    <!--FALTA LOGIA DE QUERYSEARCH-->
+    <!-----***************************************************-->
+    <SearchBar v-on:query-change="querySearch" />
+    <Navbar />
     <router-view></router-view>
-    <AppFooter/>
-    
+    <AppFooter />
   </div>
 </template>
 
 <script>
-//import SearchBar from './components/SearchBar.vue'
-import Navbar from './components/Navbar.vue'
-import Fondo from './components/Fondo.vue'
-import AppFooter from './components/AppFooter.vue'
+import SearchBar from "./components/SearchBar.vue";
+import Navbar from "./components/Navbar.vue";
+import Fondo from "./components/Fondo.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    //SearchBar,
+    SearchBar,
     Navbar,
     Fondo,
-    AppFooter  
-  }
-}
+    AppFooter,
+  },
+};
 </script>
 
 <style>
 #app {
-  
-  /*font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;*/
-
 }
+/*Font para el proyecto*/
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:700,900);
 </style>
