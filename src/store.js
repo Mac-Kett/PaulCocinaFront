@@ -54,7 +54,7 @@ export default new Vuex.Store({
     },
     getters: {
         getCartTotal: state => {
-            return state.carrito.reduce((t, {total}) => t + total,0)
+            return state.carrito.reduce((t, {total}) => t + parseInt(total),0)
         }
     },    
     mutations : {
@@ -65,7 +65,7 @@ export default new Vuex.Store({
         },
         addItemsAPedido(state) {
             state.pedido.productos = state.carrito
-            state.pedido.total = state.pedido.productos.reduce((t, {total}) => t + total,0)
+            state.pedido.total = state.pedido.productos.reduce((t, {total}) => t + parseInt(total),0)
         },
         clearPedido(state) {
             state.pedido = {
