@@ -1,9 +1,7 @@
-<template lang="html">
-
+<template>
   <section class="src-components-payment">
     <h1>{{ mensaje }}</h1>
   </section>
-
 </template>
 
 <script lang="js">

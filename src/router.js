@@ -29,7 +29,7 @@ const router = new VueRouter({
         { path: '/login', component: Login },    
         { path: '/payment', component: Payment },    
         { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
-        { path: '/pediodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
+        { path: '/pedidodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
         { path: '/ingredientes', component: Ingredientes },    
         { path: '/editrecetas', component: EditRecetas },    
         {path: '/cart', component: CartList},
