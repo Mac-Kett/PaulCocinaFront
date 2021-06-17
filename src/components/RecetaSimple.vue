@@ -19,7 +19,7 @@
             <!---*******************************************************-->
             <!--FALTA QUE SE SEPARE EN PARAFOS LAS INSTRUCCIONES -->
             <!---*******************************************************-->
-            <p>{{ comida.instrucciones }}</p>
+            <p style="white-space: pre-line;">{{ comida.instrucciones }}</p>
             <p class="font-weight-bold">
               Compra los ingredientes por ${{ comida.precio }}
             </p>
