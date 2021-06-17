@@ -1,83 +1,64 @@
 <template lang="html">
-
   <section class="src-components-recetas">
-    <h1>Editar Recetas</h1>
-    <button class="btn btn-success btn-sm ml-1" type="button" @click="nuevo()">Nuevo</button>
-    <vue-form :state="formState" @submit.prevent="guardar()" v-if="item">
-      <div class="row">
-        <label for="titulo">Titulo</label>
-        <input type="text" id="titulo" name="titulo" class="form-control" v-model.trim="item.titulo" />
-      </div>
-      <div class="row">
-        <label for="descripcion">descripcion</label>
-        <input type="text" id="descripcion" name="descripcion" class="form-control" v-model.trim="item.descripcion" />
-      </div>
-      <div class="row">
-        <label for="instrucciones">instrucciones</label>
-        <textarea id="instrucciones" name="instrucciones" class="form-control" v-model.trim="item.instrucciones" />
-      </div>
-      <div class="row">
-        <label for="foto">foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" v-model.trim="item.foto" />
-      </div>
-      <div class="row">
-        <label for="categoria">categoria</label>
-        <select id="categoria" name="categoria" class="form-control" v-model.trim="item.categoria" >
-          <option>Almuerzo</option>
-          <option>Cena</option>
-          <option>Desayuno</option>
-          <option>Postre</option>
-        </select>
-      </div>
-      <div class="row">
-        <label for="precio">precio</label>
-        <input type="text" id="precio" name="precio" class="form-control" v-model.trim="item.precio" />
-      </div>
-      <div class="row">
-        <label for="ingredientes">ingredientes</label>
-        <select size="10" multiple="multiple" id="ingredientes" name="ingredientes" class="form-control" v-model.trim="item.ingredientes" >
-          <option v-for="(p,index) in ingredientes" :key="index">{{ p.nombre }}</option>
-        </select>
-      </div>
-      <hr class="mb-4" />
-      <button class="btn btn-primary btn-block" type="submit">Guardar</button>
-      <button class="btn btn-warning btn-block" type="button" @click="cancelar()">Cancelar</button>
-    </vue-form>
+    <div class="container">
+      <h1>Recetas</h1>
+      <hr />
+      <div class="jumbotron p-5 shadow-sm bg-white rounded mx-auto">
+        <div >
+          <router-link to="/formReceta">
+            <button class="btn btn-danger" type="button" @click="nuevo()">
+              Crear Nueva Receta
+            </button>
+          </router-link>
+        </div>
 
-    <br/>
-    <table class="table">
-        <tr class="bg-success text-white">
+        
+        <br />
+        <table class="table">
+          <tr class="bg-danger text-white text-center">
             <th>Titulo</th>
+            <th>Stock</th>
             <th>Acciones</th>
-        </tr>
-        <tr class="bg-light" v-for="(p,index) in recetas" :key="index">
+          </tr>
+          <tr class="bg-light" v-for="(p, index) in recetas" :key="index">
             <td>{{ p.titulo }}</td>
-            <td><button class="btn btn-warning btn-sm" type="button" @click="editar(p)">Editar</button>
-            <button class="btn btn-success btn-sm ml-1" type="button" @click="borrar(p)">Borrar</button></td>
-        </tr>
-    </table>
+            <!--{{ p.stock }}-->
+            <td class="text-center">Stock, cambiar el el codigo</td>
+            <td class="text-center">
+              <button class="btn btn-warning btn-sm" type="button" @click="editar(p)">
+                Editar
+              </button>
+              <button
+                class="btn btn-success btn-sm ml-1" type="button" @click="borrar(p)">
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </section>
-
 </template>
 
 <script lang="js">
 
   export default  {
     name: 'src-components-recetas',
-    props: [],
+    props: [
+    ],
     mounted () {
-      this.traer()
-      this.traerIng()
+    this.traer(),
+    this.traerIng()
     },
     data () {
       return {
         recetas:[],
         ingredientes:[],
         item:null,
-        formState:{}
+        formState:{},
       }
     },
-    methods: {
+    methods: {      
       nuevo() {
         this.item = {
           _id: null,
@@ -137,11 +118,8 @@
       }
     },
     computed: {
-
     }
 }
-
-
 </script>
 
 <style scoped lang="css">

@@ -4,10 +4,10 @@ export default {
   props: [],
   data () {
     return {
-      formData : this.$store.state.pedido,
-      formState : {},
-      nombreLengthMin : 2,
-      alturaMax : 6,
+      formData: this.$store.state.pedido,
+      formState: {},
+      nombreLengthMin: 2,
+      alturaMax: 6,
       codigoPostalMax:4,
       numeroTarjetaMax:16,
       fechaExpiracionMax: 4,

@@ -5,28 +5,31 @@
     <div class="jumbotron jumbotron p-5 shadow-sm bg-white rounded mx-auto">
       <h1>Dashboard</h1>
       <hr />
-      <!--HACER QUE CUANDO SE MUESTRE UNO, NO SE MUESTREN LOS OTROS-->
-      <ul class="nav nav-pills">
-        <!--Ver Pedido-->
-        <li class="nav-item">
-          <!--Hacer que la pill activa se coloree con una funcion-->
-          <a class="nav-link active" @click="mostrarElemento"> Ver Pedidos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="mostrarElemento"> Ver Recetas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="mostrarElemento"> Ver Ingredientes</a>
-        </li>
-      </ul>
+      <div class="text-right">
+        <button
+          class="btn btn-success btn-sm"
+          type="button"
+          @click="mostrarIngredientes()"
+        >
+          Editar Ingredientes
+        </button>
+        <button
+          class="btn btn-warning btn-sm ml-2"
+          type="button"
+          @click="editarRecetas()"
+        >
+          Editar Recetas
+        </button>
+      </div>
 
-      <div class="py-4" v-if="mostrarPedido">
+      <h4>Pedidos</h4>
+      <div class="py-2">
         <div v-if="pedidos.length == 0" class="alert alert-warning mt-1">
           No se encontraron pedidos
         </div>
 
         <table class="table" v-else>
-          <tr class="bg-success text-white">
+          <tr class="bg-danger text-white">
             <th>Cliente</th>
             <th>Direccion</th>
             <th>Total</th>
@@ -57,24 +60,6 @@
           </tr>
         </table>
       </div>
-      <div class="py-4" v-if="mostrarIngrediente">
-        <button
-          class="btn btn-success btn-sm ml-1"
-          type="button"
-          @click="mostrarIngredientes()"
-        >
-          Editar Ingredientes
-        </button>
-      </div>
-      <div class="py-4" v-if="mostrarReceta">
-        <button
-          class="btn btn-warning btn-sm ml-1"
-          type="button"
-          @click="editarRecetas()"
-        >
-          Editar Recetas
-        </button>
-      </div>
     </div>
   </section>
 </template>
@@ -90,9 +75,7 @@
     data () {
       return {
         pedidos:[],
-        mostrarPedido:true,
-        mostrarReceta:false,
-        mostrarIngrediente:false
+        
       }
     },
     methods: {
@@ -115,19 +98,17 @@
           name: 'pedidodetalle', params: { id:pedido._id, pedido: pedido }
         })        
       },
-      mostrarIngredientes() {
-        this.$router.push({
-          path: '/ingredientes'
-        })       
-      },
       editarRecetas() {
         this.$router.push({
           path: '/editrecetas'
         })       
       },
-      mostrarElemento(){
-
-      }
+      mostrarIngredientes() {
+        this.$router.push({
+          path: '/ingredientes'
+        })       
+      },
+      
     },
     computed: {
 

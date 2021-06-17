@@ -1,4 +1,4 @@
-<template >
+<template lang="html">
   <section class="src-components-pedido-detalle">
     <div class="container">
       <h2 class="my-4">Cliente: {{ pedido.nombre }} {{ pedido.apellido }}</h2>
@@ -23,6 +23,7 @@
             <td>{{ p.total }}</td>
           </tr>
         </table>
+
         <br />
 
         <h5>Total: ${{ pedido.total }}</h5>
@@ -31,11 +32,12 @@
           Entregar en {{ pedido.direccion }} {{ pedido.altura }} piso:
           {{ pedido.piso }} codigo postal: {{ pedido.codigoPostal }}
         </h5>
-        <!--boton cambia estado de pedido-->
+        <!--boton cambia estado de pedido, se muestra el boton pedido cuando el mismo no esta entregado-->
         <button
           class="btn btn-success btn-sm"
           type="button"
           @click="marcarEntregado()"
+          v-show="pedido.estado == false"
         >
           Marcar como Entregado
         </button>
@@ -66,7 +68,7 @@
     },
     methods: {
       marcarEntregado() {
-        this.pedido.estado = 'ENTREGADO'
+        this.pedido.estado = 'Entregado'
         this.axios.put(process.env.VUE_APP_API_URL+"pedidos/"+this.pedido._id,this.pedido)
         .then(res=>console.log(res))
         .catch(error=>console.log(error))
@@ -76,8 +78,6 @@
 
     }
 }
-
-
 </script>
 
 <style scoped lang="css">
