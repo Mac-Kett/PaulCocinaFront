@@ -12,7 +12,7 @@
             </strong>
             <h3 class="mb-0">{{ titulo }}</h3>
             <br />
-            <p class="card-text mb-auto">
+            <p class="card-text mb-auto" style="white-space: pre-line;">
               {{ trimInstrucciones }}
             </p>
             <a @click="goToCard" class="stretched-link"> seguir leyendo... </a>
