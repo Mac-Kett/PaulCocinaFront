@@ -1,13 +1,9 @@
 <template>
-
   <section class="src-components-front-fondo">
     <div class="banner text-center d-block">
-      <a href="/"><img class="banner-logo" src="@/assets/logo.png"></a>
+      <a href="/"><img class="banner-logo" src="@/assets/logo.png" /></a>
     </div>
-    
-
   </section>
-
 </template>
 
 <script lang="js">
@@ -32,12 +28,9 @@
 </script>
 
 <style scoped lang="css">
-  .src-components-front-fondo {
-
-  }
-  .banner{
-    background-image: url(https://cdn.pixabay.com/photo/2020/04/26/15/17/seamless-pattern-5095737_960_720.png);
-    background-size: contain;
-    background-repeat: repeat;
-  }
+.banner {
+  background-image: url(https://cdn.pixabay.com/photo/2020/04/26/15/17/seamless-pattern-5095737_960_720.png);
+  background-size: contain;
+  background-repeat: repeat;
+}
 </style>

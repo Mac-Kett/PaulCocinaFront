@@ -1,30 +1,56 @@
 <template lang="html">
-
   <section class="src-components-pedido-detalle">
-    <h1>{{pedido.nombre}} {{ pedido.apellido }}</h1>
-
-
-
-    <table class="table">
-        <tr class="bg-success text-white">
+    <div class="container">
+      <h2 class="my-4">Cliente: {{ pedido.nombre }} {{ pedido.apellido }}</h2>
+      <hr />
+      <div class="jumbotron p-5 shadow-sm bg-white rounded mx-auto">
+        <h3 class="pb-3">Lista de Productos</h3>
+        <table class="table text-center">
+          <tr class="bg-danger text-white">
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>PUni</th>
-            <th>Total</th>
-        </tr>
-        <tr class="bg-light" v-for="(p,index) in pedido.productos" :key="index">
+            <th>Precio Unidad</th>
+            <th>Total Parcial</th>
+          </tr>
+          <tr
+            class="bg-light"
+            v-for="(p, index) in pedido.productos"
+            :key="index"
+          >
             <td>{{ p.title }}</td>
             <td>{{ p.quantity }}</td>
             <td>{{ p.price }}</td>
             <td>{{ p.total }}</td>
-        </tr>
-    </table>
-    <h2>Total:{{ pedido.total }}</h2>
-    <h4>Estado:{{ pedido.estado }}</h4>
-    <h4>Entregar en: {{ pedido.direccion }} {{ pedido.altura }} Piso: {{ pedido.piso }} CP: {{ pedido.codigoPostal }}</h4>
-    <button class="btn btn-success btn-sm ml-1" type="button" @click="marcarEntregado()">Marcar como Entregado</button>
-  </section>
+          </tr>
+        </table>
 
+        <br />
+
+        <h5>Total: ${{ pedido.total }}</h5>
+        <h5 class="font-weight-normal">Estado: {{ pedido.estado }}</h5>
+        <h5 class="font-weight-normal">
+          Entregar en {{ pedido.direccion }} {{ pedido.altura }} piso:
+          {{ pedido.piso }} codigo postal: {{ pedido.codigoPostal }}
+        </h5>
+        <!--boton cambia estado de pedido, se muestra el boton pedido cuando el mismo no esta entregado-->
+        <button
+          class="btn btn-success btn-sm"
+          type="button"
+          @click="marcarEntregado()"
+          v-show="pedido.estado == false"
+        >
+          Marcar como Entregado
+        </button>
+      </div>
+
+      <!--link para volver a pagina de administrador-->
+      <div class="py-3 text-center">
+        <router-link to="/admin">
+          <a href="#">Volver a pagina administrador</a>
+        </router-link>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script lang="js">
@@ -42,7 +68,7 @@
     },
     methods: {
       marcarEntregado() {
-        this.pedido.estado = 'ENTREGADO'
+        this.pedido.estado = 'Entregado'
         this.axios.put(process.env.VUE_APP_API_URL+"pedidos/"+this.pedido._id,this.pedido)
         .then(res=>console.log(res))
         .catch(error=>console.log(error))
@@ -52,14 +78,12 @@
 
     }
 }
-
-
 </script>
 
 <style scoped lang="css">
 .src-components-pedido-detalle {
 }
-h1 {
+h2 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>
