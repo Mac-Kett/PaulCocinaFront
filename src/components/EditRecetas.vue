@@ -97,9 +97,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-recetas {
-  margin: 2em;
-}
 h1 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }

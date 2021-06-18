@@ -9,29 +9,50 @@
             Crear Nuevo Ingrediente
           </button>
           <!--Modificar-->
-          <vue-form :state="formState" @submit.prevent="guardar()" v-if="item">
-            <div class="row">
-              <label for="nombre">Nombre</label>
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                class="form-control"
-                v-model.trim="item.nombre"
-              />
-            </div>
-            <hr class="mb-4" />
-            <button class="btn btn-primary btn-block" type="submit">
-              Guardar
-            </button>
-            <button
-              class="btn btn-warning btn-block"
-              type="button"
-              @click="cancelar()"
+          <div class="container mb-3 col-4">
+            <vue-form
+              :state="formState"
+              @submit.prevent="guardar()"
+              v-if="item"
             >
-              Cancelar
-            </button>
-          </vue-form>
+              <validate class="div">
+                <label for="nombre">Ingrediente</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control mb-3"
+                  v-model.trim="item.nombre"
+                  required
+                />
+                <field-messages name="nombre" show="$dirty">
+                  <div slot="required" class="alert alert-danger mt-1">
+                    Campo requerido
+                  </div>
+                </field-messages>
+              </validate>
+
+              <div class="row">
+                <div class="col-6 col-sm-6 col-md-6">
+                  <button
+                    class="btn btn-outline-success btn-sm btn-block"
+                    type="submit"
+                  >
+                    Guardar
+                  </button>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6">
+                  <button
+                    class="btn btn-outline-danger btn-sm btn-block"
+                    type="button"
+                    @click="cancelar()"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </vue-form>
+          </div>
           <!--fin de Modificar-->
         </div>
         <br />
@@ -146,9 +167,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-ingredientes {
-  margin: 2em;
-}
 h1 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
