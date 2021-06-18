@@ -31,12 +31,12 @@ const router = new VueRouter({
         { path: '/sobremi', component: Sobremi },    
         { path: '/login', component: Login },    
         { path: '/payment', component: Payment },    
-        { path: '/admin',name:"admin", component: Admin,meta: {requiresAuth: true} },    
+        { path: '/admin', name:"admin", component: Admin,meta: {requiresAuth: true} },    
         { path: '/pedidodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
         { path: '/ingredientes', component: Ingredientes },    
         { path: '/editrecetas', component: EditRecetas },    
         {path: '/cart', component: CartList},
-        { path: '/formReceta', component: FormReceta },
+        { path: '/formReceta', name: 'formReceta',component: FormReceta, props: (route) => ({...route.params}) },
         //{ path: '/formIngrediente', component: FormIngrediente },
     ]
 })

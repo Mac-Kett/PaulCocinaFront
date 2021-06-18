@@ -92,6 +92,7 @@
   export default  {
     name: 'src-components-form-receta',
     props: [
+      'item'
     ],
     mounted () {
       this.traer()
@@ -101,8 +102,8 @@
       return {
         recetas:[],
         ingredientes:[],
-        item:'',
-        formState:{}
+        formState:{},
+
       }
     },
     methods: {
@@ -112,19 +113,16 @@
           this.axios.put(process.env.VUE_APP_API_URL+"recetas/"+this.item._id,this.item)
           .then(data=>{
             console.log(data)
-            let i = this.recetas.findIndex(item => item._id == this.item._id)
-            this.recetas.splice(i,1,this.item)
-            this.item=null
+            this.$router.go(-1)
           }).catch(error => console.log(error))
         } else {
           this.axios.post(process.env.VUE_APP_API_URL+"recetas",this.item)
           .then(data=>{
             console.log(data)
-            this.item._id = data.data.insertedId
-            this.recetas.push(this.item)
-            this.item=null
+            this.$router.go(-1)
           }).catch(error => console.log(error))
         }
+
       },
       traer() {
         this.axios.get(process.env.VUE_APP_API_URL+"recetas").then(data=>{

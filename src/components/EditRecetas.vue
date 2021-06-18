@@ -20,16 +20,15 @@
             <th>Stock</th>
             <th>Acciones</th>
           </tr>
-          <tr class="bg-light" v-for="(p, index) in recetas" :key="index">
-            <td>{{ p.titulo }}</td>
+          <tr class="bg-light" v-for="(receta, index) in recetas" :key="index">
+            <td>{{ receta.titulo }}</td>
             <!--{{ p.stock }}-->
             <td class="text-center">Stock, cambiar el el codigo</td>
             <td class="text-center">
-              <button class="btn btn-warning btn-sm" type="button" @click="editar(p)">
+              <button class="btn btn-warning btn-sm" type="button" @click="editar(receta)">
                 Editar
               </button>
-              <button
-                class="btn btn-success btn-sm ml-1" type="button" @click="borrar(p)">
+              <button class="btn btn-success btn-sm ml-1" type="button" @click="borrar(receta)">
                 Borrar
               </button>
             </td>
@@ -71,29 +70,12 @@
           precio: null        
         }
       },
-      editar(item) {
-        this.item = item
-        console.log(item)
-      },
-      guardar() {
-        console.log(this.item)
-        if (this.item._id) {
-          this.axios.put(process.env.VUE_APP_API_URL+"recetas/"+this.item._id,this.item)
-          .then(data=>{
-            console.log(data)
-            let i = this.recetas.findIndex(item => item._id == this.item._id)
-            this.recetas.splice(i,1,this.item)
-            this.item=null
-          }).catch(error => console.log(error))
-        } else {
-          this.axios.post(process.env.VUE_APP_API_URL+"recetas",this.item)
-          .then(data=>{
-            console.log(data)
-            this.item._id = data.data.insertedId
-            this.recetas.push(this.item)
-            this.item=null
-          }).catch(error => console.log(error))
-        }
+      editar(item) {        
+        console.log(item);
+        this.$router.push({
+        name: 'formReceta',
+        params: {item},
+        })        
       },
       borrar(item) {
         this.axios.delete(process.env.VUE_APP_API_URL+"recetas/"+item._id).then(data => {
