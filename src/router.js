@@ -11,11 +11,11 @@ import Login from './components/Login.vue'
 import CartList from './components/cart/Cart_List.vue';
 import Payment from './components/Payment.vue';
 import PedidoDetalle from './components/PedidoDetalle.vue'
-import Ingredientes from './components/Ingredientes.vue'
+import EditIngredientes from './components/EditIngredientes.vue'
 import EditRecetas from './components/EditRecetas.vue'
 import store from './store.js'
 import FormReceta from './components/FormReceta.vue'
-//import FormIngrediente from './components/FormIngrediente/index.vue'
+//import FormIngrediente from './components/FormIngrediente.vue'
 
 
 Vue.use(VueRouter)
@@ -33,7 +33,7 @@ const router = new VueRouter({
         { path: '/payment', component: Payment },    
         { path: '/admin', name:"admin", component: Admin,meta: {requiresAuth: true} },    
         { path: '/pedidodetalle/:id', name:'pedidodetalle',component: PedidoDetalle },    
-        { path: '/ingredientes', component: Ingredientes },    
+        { path: '/editingredientes', component: EditIngredientes },    
         { path: '/editrecetas', component: EditRecetas },    
         {path: '/cart', component: CartList},
         { path: '/formReceta', name: 'formReceta',component: FormReceta, props: (route) => ({...route.params}) },

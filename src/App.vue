@@ -2,9 +2,9 @@
   <div id="app">
     <Fondo />
     <!-----***************************************************-->
-    <!--FALTA LOGIA DE QUERYSEARCH-->
+    <!--FALTA LOGIA DE QUERYSEARCH v-on:query-change="querySearch" -->
     <!-----***************************************************-->
-    <SearchBar v-on:query-change="querySearch" />
+    <SearchBar />
     <Navbar />
     <router-view></router-view>
     <AppFooter />
@@ -29,8 +29,6 @@ export default {
 </script>
 
 <style>
-#app {
-}
 /*Font para el proyecto*/
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display:700,900);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:700);
 </style>

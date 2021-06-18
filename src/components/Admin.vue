@@ -75,7 +75,7 @@
     data () {
       return {
         pedidos:[],
-        
+
       }
     },
     methods: {
@@ -96,19 +96,19 @@
         console.log(pedido)
         this.$router.push({
           name: 'pedidodetalle', params: { id:pedido._id, pedido: pedido }
-        })        
+        })
       },
       editarRecetas() {
         this.$router.push({
           path: '/editrecetas'
-        })       
+        })
       },
       mostrarIngredientes() {
         this.$router.push({
-          path: '/ingredientes'
-        })       
+          path: '/editingredientes'
+        })
       },
-      
+
     },
     computed: {
 
