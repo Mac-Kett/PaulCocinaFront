@@ -16,9 +16,15 @@
                 class="form-control mr-sm-2"
                 type="search"
                 v-model="query"
-                v-on:input="$emit('query-change', query)"
               />
-              <a class="nav-link btn-danger text-white mr-1" type="submit">
+
+              <!--   v-model="query"
+                v-on:input="$emit('query-change', query)"  ESTO ESTABA ADENTRO DEL INPUT -->
+              <a
+                class="nav-link btn-danger text-white mr-1"
+                type="submit"
+                @click="buscarElemento(query)"
+              >
                 Buscar
               </a>
             </form>
@@ -44,15 +50,31 @@
     },
     data () {
       return {
-        query:''
+        query:'',
+        busquedas: []
 
       }
     },
     methods: {
-
+      buscarElemento(elemento){
+         this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+elemento).then(data => {
+            console.log('buscar elemento')
+            console.log(data)
+            this.busquedas = data.data
+            this.enviarResultados(this.busquedas)
+        }).catch(error=>console.log(error))
+      },
+      enviarResultados(item){
+        console.log('enviar resultados')
+        console.log(item)
+        this.$router.push({
+        name: 'resultadosBusqueda',
+        params: {item}
+        })
+      }
     },
     computed: {
-
+      
     }
 }
 </script>

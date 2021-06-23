@@ -15,6 +15,7 @@ import EditIngredientes from './components/EditIngredientes.vue'
 import EditRecetas from './components/EditRecetas.vue'
 import store from './store.js'
 import FormReceta from './components/FormReceta.vue'
+import ResultadosBusqueda from './components/ResultadosBusqueda.vue'
 //import FormIngrediente from './components/FormIngrediente.vue'
 
 
@@ -37,6 +38,7 @@ const router = new VueRouter({
         { path: '/editrecetas', component: EditRecetas },    
         {path: '/cart', component: CartList},
         { path: '/formReceta', name: 'formReceta',component: FormReceta, props: (route) => ({...route.params}) },
+        { path: '/resultadosBusqueda', name: 'resultadosBusqueda',component: ResultadosBusqueda, props: (route) => ({...route.params}) },
         //{ path: '/formIngrediente', component: FormIngrediente },
     ]
 })
