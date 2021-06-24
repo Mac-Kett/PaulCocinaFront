@@ -14,6 +14,7 @@
       </div>
 
     </div>-->
+    <tr class="rounded">
     <td :style="{width: '250px'}">{{cartItem.title}}</td>
     <td :style="{width: '50px'}">${{cartItem.price}}</td>
     <td :style="{width: '50px'}"><input :id ="cartItem.title" type="number" class="form-control " :style="{width: '50px'}" :value="cartItem.quantity" @click="changeQuantity($event)"></td>
@@ -25,6 +26,7 @@
         </svg>
       </a>
     </td>
+    </tr>
   </div>
 </template>
 <script>
@@ -47,3 +49,5 @@ export default {
   }
 }
 </script>
+<style scoped lang="css">
+</style>
