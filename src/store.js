@@ -46,6 +46,12 @@ export default new Vuex.Store({
         addProduct({commit},product) {
             commit('addProduct',product);
         },
+        deleteProduct({commit},product) {
+            commit('deleteProduct',product);
+        },
+        changeProductQuantity({commit}, payload) {
+            commit('changeProductQuantity', payload);
+        },
         addItemsAPedido({commit}){
             commit('addItemsAPedido')
         },
@@ -96,6 +102,7 @@ export default new Vuex.Store({
         addProduct(state,product) {
             let p = state.carrito.find(pedido => pedido.prod_id == product._id)
             if (p) {
+                //agregar chequeo de stock
                 p.quantity++;
                 p.total = p.quantity * p.price;
             } else {
@@ -108,6 +115,21 @@ export default new Vuex.Store({
                 }
                 state.carrito.push(p);
             }
-        }
+        }, 
+        deleteProduct(state,product) {
+            //agregar refresco de stock
+            let index = state.carrito.findIndex(pedido => pedido.prod_id == product._id)
+            if (index) {
+                state.carrito.splice(index, 1)
+            }
+        }, 
+        changeProductQuantity(state,payload) {
+            let p = state.carrito.find(pedido => pedido.prod_id == payload.item.prod_id)
+            if (p) {
+                //agregar chequeo de stock
+                p.quantity = payload.qty;
+                p.total = p.quantity * p.price;
+            }
+        },  
     }
 })

@@ -35,7 +35,7 @@
           <li class="nav-item">
             <router-link to="/recetas/almuerzo">
               <a class="nav-link btn-danger text-white mr-1" href="#"
-                >Almuezo</a
+                >Almuerzo</a
               >
             </router-link>
           </li>
@@ -60,6 +60,7 @@
             </router-link>
           </li>
           <!--El boton del carrito solo se muestra si la cantidad es mayor a cero-->
+          <!--
           <li class="nav-item">
             <router-link to="/cart" class="button is-warning">
               <a
@@ -72,6 +73,12 @@
               >
             </router-link>
           </li>
+          -->
+          <li class="nav-item">
+            <div class="nav-link btn-danger text-white mr-1">
+             <Cart />
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
@@ -80,9 +87,11 @@
 </template>
 
 <script lang="js">
+import Cart from './cart/Cart_List.vue'
   export default  {
     name: 'src-components-front-navbar',
     components: {
+        Cart    
     },
     props: [],
     mounted () {
@@ -90,6 +99,7 @@
     },
     data () {
       return {
+        show: false,
         mostrar: true,
 
       }
