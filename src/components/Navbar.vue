@@ -75,9 +75,9 @@
           </li>
           -->
           <li class="nav-item">
-            <div class="nav-link btn-danger text-white mr-1">
+            <!--<div class="nav-link btn-danger text-white mr-1"> -->
              <Cart />
-            </div>
+            <!--</div> -->
           </li>
         </ul>
       </div>
