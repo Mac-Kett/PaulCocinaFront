@@ -8,10 +8,12 @@
           :id="cartItem.title"
           type="number"
           class="form-control "
-          :style="{ width: '50px' }"
+          :style="{ width: '60px' }"
           :value="cartItem.quantity"
-          @click="changeQuantity($event)"
+          :min="1"
+          @change="changeQuantity($event)"
         />
+        <!-- :max="cartItem.stock" PONERLE UN MAX AL CARRITO EN BASE AL STOCK.-->
       </td>
       <td :style="{ width: '50px' }" class="font-weight-bold">
         ${{ cartItem.total }}

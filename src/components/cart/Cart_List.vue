@@ -23,9 +23,9 @@
         </tbody>
 
         </table> 
-        <div class="d-flex justify-content-end">
-          <h5>Items: <span class="text-success pr-4" >{{cartTotalQuantity}}</span></h5>
-          <h5>Total: <span class="text-success">${{cartTotal}}</span></h5>
+        <div class="d-flex justify-content-end" v-if="cartItems.length">
+          <tr class = "table-striped bg-dark rounded"><span class="pr-3 ml-1 pl-1" >Items: {{cartTotalQuantity}}</span>
+          Total: <span class="text-success font-weight-bold mr-1">${{cartTotal}}</span></tr>
         </div>
       </div>
       <div class="border-top-0 d-flex justify-content-between ">
@@ -84,11 +84,6 @@ export default {
       this.$router.push({ path: "/checkout" });
       this.ver = false;
       window.scrollTo(0, screen.height / 2);
-    },
-    changeQuantity(item, quantity) {
-      console.log(item.target.id);
-
-      this.$store.dispatch("changeProductQuantity", item, quantity);
     },
   },
 };
