@@ -16,12 +16,13 @@
           <p v-if="!cartQuantity" class="cart-empty-text has-text-centered">
         No hay articulos en el carrito!
       </p>
-        <table v-else class="table-responsive table-sm sticky-header table-bordered" >
+        <table v-else class="table-responsive table-sm  table-bordered rounded" >
               
-        <tr v-for="cartItem in cartItems" :key="cartItem.id" class = "text-dark bg-light rounded">
-              <td><CartItem :cartItem="cartItem"/></td>
-            </tr>
-        
+        <tbody v-for="cartItem in cartItems" :key="cartItem.id" class = "text-dark bg-light">
+              <tr class="rounded"><CartItem :cartItem="cartItem"/></tr>
+            <!--</tr> -->
+        </tbody>
+
         </table> 
         <div class="d-flex justify-content-end">
           <h5>Items: <span class="text-success pr-4" >{{cartQuantity}}</span></h5>
