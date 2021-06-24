@@ -62,6 +62,13 @@ export default new Vuex.Store({
     getters: {
         getCartTotal: state => {
             return state.carrito.reduce((t, {total}) => t + parseInt(total),0)
+        },
+        getCartTotalItems: state =>{
+            let totalquantity = 0
+            state.carrito.forEach(i => {
+                totalquantity += parseInt(i.quantity) ;
+            })
+            return totalquantity;
         }
     },    
     mutations : {

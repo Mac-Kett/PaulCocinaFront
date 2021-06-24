@@ -3,9 +3,9 @@
     <!--Jumbotron-->
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
-        <h1 class="display-4 font-italic">{{ getJumbotron().titulo }}</h1>
+        <h1 class="display-4 font-italic">{{ recetaJumbo.titulo }}</h1>
         <p class="lead my-3">
-          {{ getJumbotron().descripcion }}
+          {{ recetaJumbo.descripcion }}
         </p>
         <a @click="goToCard" class="text-white font-weight-bold">
           seguir leyendo...
@@ -48,8 +48,11 @@ import Card from './Card.vue'
     },
     props: [],
     mounted () {
-      this.axios.get(`${this.url}recetas/`).then(res => {
-            this.comidas = res.data});
+        this.axios.get(`${this.url}recetas/`).then(res => {
+        this.comidas = res.data
+        this.getJumbotron();
+        });
+        
       },
     data () {
       return {
@@ -69,7 +72,7 @@ import Card from './Card.vue'
           }) 
       },
       getJumbotron(){
-        return this.recetaJumbo = this.comidas.find(receta => receta.titulo === 'Crumble de arandanos');
+        this.recetaJumbo = this.comidas.find(receta => receta.titulo === 'Crumble de arandanos');
       },          
       goToCard() {
         let id = this.recetaJumbo._id

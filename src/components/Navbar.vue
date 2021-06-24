@@ -35,7 +35,7 @@
           <li class="nav-item">
             <router-link to="/recetas/almuerzo">
               <a class="nav-link btn-danger text-white mr-1" href="#"
-                >Almuerzo</a
+                >Almuezo</a
               >
             </router-link>
           </li>
