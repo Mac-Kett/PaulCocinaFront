@@ -71,6 +71,7 @@
     methods: {
       addProducto(){
         this.$store.dispatch('addProduct',this.comida)
+        window.scrollTo(0,0);
       },
 
     },
