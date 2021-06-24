@@ -23,7 +23,7 @@ export default new Vuex.Store({
             pais:'',
             productos: [],
             total: 0,
-            estado:'NUEVO',
+            estado:'Nuevo',
             paymentStatus:null
         },
         usuario: {
@@ -92,7 +92,7 @@ export default new Vuex.Store({
                 pais:'',
                 productos: [],
                 total: 0,
-                estado:'NUEVO'
+                estado:'Nuevo'
             }
             state.carrito = []
         },
