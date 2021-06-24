@@ -95,7 +95,7 @@
             <!-- campo altura -->
             <div class="row">
               <validate tag="div" class="col-md-5 mb-3">
-                <label for="altura"> Altura </label>
+                <label for="altura"> Piso </label>
                 <input type="number" id="altura" name="altura" class="form-control" autocomplete="on"
                   v-model.number="formData.altura" required />
                 <!--v-model.trim="formData.altura" deberia ir???-->
@@ -108,9 +108,9 @@
 
               <!-- campo piso -->
               <validate tag="div" class="col-md-4 mb-3">
-                <label for="piso"> Piso </label>
-                <input type="number" id="piso" name="piso" class="form-control" autocomplete="on"
-                  v-model.number="formData.piso" />
+                <label for="piso"> Departamento </label>
+                <input type="text" id="piso" name="piso" class="form-control" autocomplete="on"
+                  v-model.trim="formData.piso" />
                 <!--v-model.trim="formData.piso" deberia ir???-->
                 <field-messages name="piso" show="$dirty">
                   <div slot="required" class="alert alert-danger mt-1">

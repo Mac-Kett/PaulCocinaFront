@@ -6,7 +6,7 @@
         </svg>
         <span class="badge badge-light  badge-pill ml-3"> {{ cartParcialQuantity }}</span>
     </div>
-    <div v-if= "ver" >
+    <div v-if="ver">
       <div>
         <h5>
           Carrito de Compras
@@ -28,54 +28,38 @@
           <h5>Total: <span class="text-success">${{cartTotal}}</span></h5>
         </div>
       </div>
-      <div class="border-top-0 d-flex justify-content-between">
-        <button :disabled="!cartItems.length" type="button" class="btn btn-secondary" @click="removeAllCartItems">Vaciar</button>
-        <button :disabled="!cartItems.length" type="button" class="btn btn-success"  @click="checkout()">Pagar</button>
-      </div>
-     <!-- <div class="cart--header has-text-centered">
-        <i class="fa fa-2x fa-shopping-cart"></i>
-      </div>
-      <p v-if="!cartQuantity" class="cart-empty-text has-text-centered">
-        no hay articulos en el carrito!
-      </p>
-      <ul v-else>
-        <li class="cart-item s" v-for="cartItem in cartItems" :key="cartItem.id">
-          <CartListItem :cartItem="cartItem"/>
-        </li>
-        <div class="notification is-success">
-          <p>
-            Cantidad:
-            <span class="has-text-weight-bold">{{ cartQuantity }}</span>
-          </p>
-        </div>
-        <br>
-      </ul>
-      <div class="buttons">
-        <button :disabled="!cartItems.length" class="button is-info" @click="checkout()">
-          Pago (<span class="has-text-weight-bold">${{ cartTotal }}</span>)
+      <div class="border-top-0 d-flex justify-content-between ">
+        <button
+          :disabled="!cartItems.length"
+          type="button"
+          class="btn btn-secondary"
+          @click="removeAllCartItems"
+        >
+          Vaciar
         </button>
-
-        <button class="button is-danger is-outlined" @click="removeAllCartItems">
-          <span>Vaciar Carrito</span>
-          <span class="icon is-small">
-            <i class="fas fa-times"></i>
-          </span>
+        <button
+          :disabled="!cartItems.length"
+          type="button"
+          class="btn btn-success"
+          @click="checkout()"
+        >
+          Pagar
         </button>
-      </div>-->
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 <script>
-import CartItem from './Cart_List_Item.vue'
+import CartItem from "./Cart_List_Item.vue";
 export default {
   name: "CartList",
   data() {
-    return{
+    return {
       ver: false,
-    }
+    };
   },
   components: {
-    CartItem
+    CartItem,
   },
   computed: {
     cartParcialQuantity() {
@@ -85,35 +69,34 @@ export default {
       return this.$store.getters.getCartTotalItems
     },
     cartItems() {
-      return this.$store.state.carrito
+      return this.$store.state.carrito;
     },
     cartTotal() {
-      return this.$store.getters.getCartTotal
-    }   
+      return this.$store.getters.getCartTotal;
+    },
   },
-  created() {
-  },
+  created() {},
   methods: {
     removeAllCartItems() {
       this.$store.dispatch("removeAllCartItems");
     },
     checkout() {
-      this.$router.push({path:'/checkout'});
+      this.$router.push({ path: "/checkout" });
       this.ver = false;
-      window.scrollTo(0,screen.height/2);
+      window.scrollTo(0, screen.height / 2);
     },
     changeQuantity(item, quantity) {
-     console.log(item.target.id)
+      console.log(item.target.id);
 
-      this.$store.dispatch('changeProductQuantity',item, quantity)
+      this.$store.dispatch("changeProductQuantity", item, quantity);
     },
-  }
+  },
 };
 </script>
 <style scoped lang="css">
-table{
-  overflow-y:scroll;
-  max-height:180px;
-  display:block;
+table {
+  overflow-y: scroll;
+  max-height: 180px;
+  display: block;
 }
 </style>

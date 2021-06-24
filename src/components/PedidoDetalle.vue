@@ -33,14 +33,15 @@
           {{ pedido.piso }} codigo postal: {{ pedido.codigoPostal }}
         </h5>
         <!--boton cambia estado de pedido, se muestra el boton pedido cuando el mismo no esta entregado-->
-        <button
-          class="btn btn-success btn-sm"
-          type="button"
-          @click="marcarEntregado()"
-          v-show="pedido.estado == false"
-        >
-          Marcar como Entregado
-        </button>
+        <div class="py-3">
+          <button
+            class="btn btn-success btn-sm"
+            type="button"
+            @click="marcarEntregado()"
+          >
+            Marcar como Entregado
+          </button>
+        </div>
       </div>
 
       <!--link para volver a pagina de administrador-->
@@ -81,8 +82,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-pedido-detalle {
-}
 h2 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
