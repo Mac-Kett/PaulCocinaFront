@@ -61,17 +61,20 @@
             console.log('buscar elemento')
             console.log(data)
             this.busquedas = data.data
-            this.enviarResultados(this.busquedas)
+            this.$store.dispatch('cargarBusquedas',this.busquedas)
+            //this.enviarResultados(this.busquedas)
         }).catch(error=>console.log(error))
+      
       },
-      enviarResultados(item){
+      /*enviarResultados(item){
         console.log('enviar resultados')
         console.log(item)
         this.$router.push({
         name: 'resultadosBusqueda',
         params: {item}
         })
-      }
+      },*/
+      
     },
     computed: {
       

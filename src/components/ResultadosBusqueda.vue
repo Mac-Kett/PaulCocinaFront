@@ -1,9 +1,10 @@
 <template>
   <section class="src-components-resultadosBusqueda container">
-    <div v-if="this.item.length">
-      <h1>Resultados encontrados</h1>
+    <h1>Resultados encontrados {{ $store.state.busquedas }}</h1>
+    <div v-if="mostrarResultadosBusquedas.length">
+      <h1>Resultados encontrados {{ $store.state.busquedas }}</h1>
       <Card
-        v-for="elemento in item"
+        v-for="elemento in mostrarResultadosBusquedas"
         :key="elemento._id"
         :id="elemento._id"
         :foto="elemento.foto"
@@ -30,20 +31,19 @@ import Card from './Card.vue'
     components: {
       Card,
     },
-    props: ['item'],
+    props: [/*'item'*/],
     mounted () {
-      console.log('mounted de busqueda')
-      console.log(this.item)
+      /*console.log('mounted de busqueda')
+      console.log(this.item)*/
       //this.cargarDatos()
     },
-    /*beforeRouteUpdate (to, from, next) {
-      this.categoria = this.primerLetraMayus(to.params.categoria)
+      /*beforeRouteUpdate (/to, from, next) {
+     /*this.categoria = this.primerLetraMayus(to.params.categoria)
       this.cargarDatos()
       next()
     },*/
     data () {
       return {
-        
         /*url: process.env.VUE_APP_API_URL,
         categoria: this.primerLetraMayus(this.$route.params.categoria),
         comidas: []*/
@@ -62,7 +62,9 @@ import Card from './Card.vue'
       }*/
     },
     computed: {
-
+      /*mostrarResultadosBusquedas(){
+        return this.$store.state.busquedas
+      }*/
     }
 }
 </script>
