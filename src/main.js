@@ -10,6 +10,7 @@ import { router } from './router'
 import './httpAxios'
 import './form'
 import store from './store'
+import './globalFilters' 
 
 new Vue({
   router,

@@ -21,7 +21,7 @@
             <!---*******************************************************-->
             <p style="white-space: pre-line;">{{ comida.instrucciones }}</p>
             <p class="font-weight-bold">
-              Compra los ingredientes por ${{ comida.precio }}
+              Compra los ingredientes por {{ comida.precio | currency }}
             </p>
           </div>
           <!-- boton de carrito de compras -->
@@ -67,7 +67,7 @@
         comida : [],
       }
     },
-    
+
     methods: {
       addProducto(){
         this.$store.dispatch('addProduct',this.comida)
@@ -82,8 +82,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-receta-simple {
-}
 h2,
 h3 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;

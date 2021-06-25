@@ -2,7 +2,7 @@
   <div class="box">
     <tr class="rounded">
       <td :style="{ width: '250px' }">{{ cartItem.title }}</td>
-      <td :style="{ width: '50px' }">${{ cartItem.price }}</td>
+      <td :style="{ width: '50px' }">{{ cartItem.price | currency }}</td>
       <td :style="{ width: '50px' }">
         <input
           :id="cartItem.title"
@@ -16,7 +16,7 @@
         <!-- :max="cartItem.stock" PONERLE UN MAX AL CARRITO EN BASE AL STOCK.-->
       </td>
       <td :style="{ width: '50px' }" class="font-weight-bold">
-        ${{ cartItem.total }}
+        {{ cartItem.total | currency }}
       </td>
       <td>
         <a class="btn btn-outline-danger btn-sm" @click="deleteItem()">
