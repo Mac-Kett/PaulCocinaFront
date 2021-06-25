@@ -3,9 +3,9 @@ import Vue from 'vue'
 
 var miMixin = {
     computed: {
-        mostrarResultadosBusquedas(){
+        /*mostrarResultadosBusquedas(){
         return this.$store.state.busquedas
-      }
+      }*/
     }
 }
 

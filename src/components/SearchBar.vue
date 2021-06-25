@@ -51,20 +51,21 @@
     data () {
       return {
         query:'',
-        busquedas: []
 
       }
     },
+
     methods: {
       buscarElemento(elemento){
-         this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+elemento).then(data => {
-            console.log('buscar elemento')
-            console.log(data)
-            this.busquedas = data.data
-            this.$store.dispatch('cargarBusquedas',this.busquedas)
-            //this.enviarResultados(this.busquedas)
-        }).catch(error=>console.log(error))
-      
+        console.log('1 - entro a searchBar')
+        this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+ elemento).then(data => {
+                let encontrados = data.data
+                console.log('2- trae data:' + encontrados)
+                this.$store.dispatch('cargarBusquedas',encontrados)
+            }).catch(error=>console.log(error));
+         this.$router.push({
+          path: '/resultadosBusqueda'
+        })
       },
       /*enviarResultados(item){
         console.log('enviar resultados')
@@ -74,17 +75,15 @@
         params: {item}
         })
       },*/
-      
+
     },
     computed: {
-      
+
     }
 }
 </script>
 
 <style scoped lang="css">
-.src-components-searchbar {
-}
 .navbar {
   background-color: transparent !important;
 }

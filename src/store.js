@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import './httpAxios'
 
 Vue.use(Vuex)
 
@@ -53,9 +54,10 @@ export default new Vuex.Store({
         login({commit},username,isadmin){
             commit('login',username,isadmin)
         },
-        cargarBusquedas({commit},busquedas){
-            console.log('Entro a actions carga busqueda')
-            commit('actualizarBusquedas',busquedas)
+        cargarBusquedas({commit},elementos){ //en action
+            console.log('3 - Entro a actions')            
+            commit('setBusquedas', elementos) 
+            
         }
     },
     getters: {
@@ -64,6 +66,10 @@ export default new Vuex.Store({
         }
     },    
     mutations : {
+        setBusquedas(state,busquedas){ //en mutation
+            console.log('4 - Entro a mutations')
+            state.busquedas = busquedas    
+        },
         login(state,username,isadmin){
             state.usuario.esAdmin=isadmin
             state.usuario.nombre=username
@@ -115,10 +121,6 @@ export default new Vuex.Store({
             }
         },
 
-        actualizarBusquedas(state,busquedas){
-            console.log('Entro a mutations actualizar busqueda')
-            state.busquedas=busquedas
-            console.log(state.busquedas)
-        }
+        
     }
 })

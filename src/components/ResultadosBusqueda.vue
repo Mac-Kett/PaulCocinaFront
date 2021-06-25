@@ -1,10 +1,9 @@
 <template>
   <section class="src-components-resultadosBusqueda container">
-    <h1>Resultados encontrados {{ $store.state.busquedas }}</h1>
-    <div v-if="mostrarResultadosBusquedas.length">
-      <h1>Resultados encontrados {{ $store.state.busquedas }}</h1>
+    <div v-if="encontrados.length">
+      <h1>Resultados encontrados</h1>
       <Card
-        v-for="elemento in mostrarResultadosBusquedas"
+        v-for="elemento in encontrados"
         :key="elemento._id"
         :id="elemento._id"
         :foto="elemento.foto"
@@ -33,6 +32,8 @@ import Card from './Card.vue'
     },
     props: [/*'item'*/],
     mounted () {
+
+
       /*console.log('mounted de busqueda')
       console.log(this.item)*/
       //this.cargarDatos()
@@ -60,20 +61,22 @@ import Card from './Card.vue'
       primerLetraMayus(str){
         return str.charAt(0).toUpperCase() + str.slice(1)
       }*/
+
     },
     computed: {
       /*mostrarResultadosBusquedas(){
         return this.$store.state.busquedas
       }*/
+      encontrados() {
+      return this.$store.state.busquedas;
+    }
+
     }
 }
 </script>
 
 <style scoped lang="css">
-.src-components-resultadosBusqueda {
-}
-
-/*h1 {
+h1 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-}*/
+}
 </style>
