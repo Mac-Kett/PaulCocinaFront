@@ -19,20 +19,20 @@
           >
             <td>{{ p.title }}</td>
             <td>{{ p.quantity }}</td>
-            <td>{{ p.price }}</td>
-            <td>{{ p.total }}</td>
+            <td>{{ p.price | currency }}</td>
+            <td>{{ p.total | currency }}</td>
           </tr>
         </table>
 
         <br />
 
-        <h5>Total: ${{ pedido.total }}</h5>
+        <h5>Total: {{ pedido.total | currency }}</h5>
         <h5 class="font-weight-normal">Estado: {{ pedido.estado }}</h5>
         <h5 class="font-weight-normal">
           Entregar en {{ pedido.direccion }} {{ pedido.altura }} piso:
           {{ pedido.piso }} codigo postal: {{ pedido.codigoPostal }}
         </h5>
-        <!--boton cambia estado de pedido, se muestra el boton pedido cuando el mismo no esta entregado-->
+        <!--boton cambia estado de pedido-->
         <div class="py-3">
           <button
             class="btn btn-success btn-sm"

@@ -39,7 +39,7 @@
           <tr class="bg-light" v-for="(p, index) in pedidos" :key="index">
             <td>{{ p.nombre }} {{ p.apellido }}</td>
             <td>{{ p.direccion }} {{ p.altura }}</td>
-            <td>{{ p.total }}</td>
+            <td>{{ p.total | currency }}</td>
             <td>{{ p.estado }}</td>
             <td>
               <button

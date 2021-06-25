@@ -52,7 +52,7 @@ import Card from './Card.vue'
         this.comidas = res.data
         this.getJumbotron();
         });
-        
+
       },
     data () {
       return {
@@ -69,25 +69,23 @@ import Card from './Card.vue'
           return this.comidas.filter(com =>{
               if (com.categoria === cat) i++
               return com.categoria === cat && i<=2
-          }) 
+          })
       },
       getJumbotron(){
         this.recetaJumbo = this.comidas.find(receta => receta.titulo === 'Crumble de arandanos');
-      },          
+      },
       goToCard() {
         let id = this.recetaJumbo._id
         this.$router.push({ path: `/receta/${id}` })
       },
     },
     computed: {
-        
+
     }
   }
 </script>
 
 <style scoped lang="css">
-.src-components-home {
-}
 .jumbotron {
   background-image: url(https://cdn.pixabay.com/photo/2017/05/02/18/20/blueberries-2278921_1280.jpg);
 }
