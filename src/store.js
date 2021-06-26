@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import './httpAxios'
 
 Vue.use(Vuex)
 
@@ -64,6 +65,7 @@ export default new Vuex.Store({
         }
     },    
     mutations : {
+    
         login(state,username,isadmin){
             state.usuario.esAdmin=isadmin
             state.usuario.nombre=username

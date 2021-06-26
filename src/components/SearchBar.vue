@@ -13,7 +13,6 @@
                 type="search"
                 v-model="query"
               />
-
               <a
                 class="nav-link btn-danger text-white mr-1"
                 type="submit"
@@ -45,13 +44,13 @@
     data () {
       return {
         query:'',
-        busquedas: []
 
       }
     },
+
     methods: {
       buscarElemento(elemento){
-        console.log('entro a serchbar')
+        console.log('1 - entro a searchBar')
         this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+ elemento).then(data => {
                 let encontrados = data.data
                 console.log('2- trae data:' + encontrados)
@@ -65,14 +64,12 @@
       
     },
     computed: {
-      
+
     }
 }
 </script>
 
 <style scoped lang="css">
-.src-components-searchbar {
-}
 .navbar {
   background-color: transparent !important;
 }

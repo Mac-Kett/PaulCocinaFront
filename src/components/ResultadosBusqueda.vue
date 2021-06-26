@@ -1,6 +1,7 @@
 <template>
   <section class="src-components-resultadosBusqueda container">
     <div v-if="encontrados.length">
+      <h1>Resultados encontrados</h1>
       <Card
         v-for="elemento in encontrados"
         :key="elemento._id"
@@ -32,6 +33,7 @@ import { miMixinLocal } from '../localMixins'
     },
     props: [],
     mounted () {
+
      
     },
     mixins: [miMixinLocal],
@@ -46,11 +48,13 @@ import { miMixinLocal } from '../localMixins'
     },
     computed: {
     
+
     }
 }
 </script>
 
 <style scoped lang="css">
-.src-components-resultadosBusqueda {
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 </style>

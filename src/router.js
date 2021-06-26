@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-//agruegue para solucionar error de actualizar busqueda
+//agruegue jmm
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location, onResolve, onReject) {
   if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
@@ -13,7 +13,7 @@ VueRouter.prototype.replace = function repalce(location, onResolve, onReject) {
   if (onResolve || onReject) return originalReplace.call(this, location, onResolve, onReject)
   return originalReplace.call(this, location).catch(err => err)
 }
-//
+//final agregacion jmm
 
 import Home from './components/Home.vue'
 import RecetaSimple from './components/RecetaSimple.vue'
@@ -30,7 +30,6 @@ import EditRecetas from './components/EditRecetas.vue'
 import store from './store.js'
 import FormReceta from './components/FormReceta.vue'
 import ResultadosBusqueda from './components/ResultadosBusqueda.vue'
-//import FormIngrediente from './components/FormIngrediente.vue'
 
 
 Vue.use(VueRouter)
@@ -52,8 +51,7 @@ const router = new VueRouter({
         { path: '/editrecetas', component: EditRecetas },    
         { path: '/cart', component: CartList},
         { path: '/formReceta', name: 'formReceta',component: FormReceta, props: (route) => ({...route.params}) },
-        { path: '/resultadosBusqueda', name: 'resultadosBusqueda',component: ResultadosBusqueda},
-        //{ path: '/formIngrediente', component: FormIngrediente },
+        { path: '/resultadosBusqueda',component: ResultadosBusqueda},
     ]
 })
 
