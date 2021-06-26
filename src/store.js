@@ -53,9 +53,9 @@ export default new Vuex.Store({
         login({commit},username,isadmin){
             commit('login',username,isadmin)
         },
-        cargarBusquedas({commit},busquedas){
+        cargarBusquedas({commit},elementos){
             console.log('Entro a actions carga busqueda')
-            commit('actualizarBusquedas',busquedas)
+                commit ('setBusquedas',elementos)
         }
     },
     getters: {
@@ -115,10 +115,9 @@ export default new Vuex.Store({
             }
         },
 
-        actualizarBusquedas(state,busquedas){
-            console.log('Entro a mutations actualizar busqueda')
+        setBusquedas(state,busquedas){
+            console.log('Entro a mutations setbusquedas')
             state.busquedas=busquedas
-            console.log(state.busquedas)
         }
     }
 })

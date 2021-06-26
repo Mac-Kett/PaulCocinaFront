@@ -1,5 +1,4 @@
 <template>
-  <!--TODO probar que ande-->
   <section class="src-components-searchbar p-y1">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div
@@ -7,9 +6,6 @@
         id="navbarNav"
       >
         <ul class="navbar-nav nav-pills ml-auto">
-          <!-- *********************************************** -->
-          <!--FALTA LOGICA PARA LA BUSQUEDA!!!!-->
-          <!-- *********************************************** -->
           <li class="nav-item">
             <form class="form-inline">
               <input
@@ -18,8 +14,6 @@
                 v-model="query"
               />
 
-              <!--   v-model="query"
-                v-on:input="$emit('query-change', query)"  ESTO ESTABA ADENTRO DEL INPUT -->
               <a
                 class="nav-link btn-danger text-white mr-1"
                 type="submit"
@@ -57,23 +51,17 @@
     },
     methods: {
       buscarElemento(elemento){
-         this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+elemento).then(data => {
-            console.log('buscar elemento')
-            console.log(data)
-            this.busquedas = data.data
-            this.$store.dispatch('cargarBusquedas',this.busquedas)
-            //this.enviarResultados(this.busquedas)
-        }).catch(error=>console.log(error))
-      
-      },
-      /*enviarResultados(item){
-        console.log('enviar resultados')
-        console.log(item)
+        console.log('entro a serchbar')
+        this.axios.get(process.env.VUE_APP_API_URL+"barraBusquedas/"+ elemento).then(data => {
+                let encontrados = data.data
+                console.log('2- trae data:' + encontrados)
+                this.$store.dispatch('cargarBusquedas',encontrados)
+            }).catch(error=>console.log(error));
         this.$router.push({
-        name: 'resultadosBusqueda',
-        params: {item}
-        })
-      },*/
+          path: '/resultadosBusqueda'
+         }) 
+      },
+    
       
     },
     computed: {
