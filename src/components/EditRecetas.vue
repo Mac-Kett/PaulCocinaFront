@@ -22,9 +22,8 @@
           </tr>
           <tr class="bg-light" v-for="(receta, index) in recetas" :key="index">
             <td>{{ receta.titulo }}</td>
-            <td class="text-center">{{ receta.precio }}</td>
-            <td class="text-center">Stock, cambiar el el codigo</td>
-            <!-- MODIFICAR CON {{ receta.stock }}-->
+            <td class="text-center">{{ receta.precio | currency }}</td>
+            <td class="text-center">{{ receta.stock }}</td>
             <td class="text-center">
               <button
                 class="btn btn-warning btn-sm"

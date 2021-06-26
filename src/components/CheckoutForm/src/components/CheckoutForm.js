@@ -30,12 +30,14 @@ export default {
   methods: {
     async enviar() {
       this.$store.dispatch("addItemsAPedido");
+      
       this.axios.post(process.env.VUE_APP_API_URL+"pedidos",this.$store.state.pedido,{'content-type':'application/json'}).then(res=>{
         console.log(res)
         this.$store.state.pedido = res.data
         this.$router.push({
           path: '/payment'
         })
+
       }).catch((error) => {
           console.log(error)
           this.$store.state.pedido = error.data
@@ -43,6 +45,7 @@ export default {
             path: '/payment'
           })
       })
+      this.$store.dispatch("removeAllCartItems")
     }
   }
 }
