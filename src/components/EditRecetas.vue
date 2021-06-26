@@ -46,6 +46,7 @@
         <!--link para volver a pagina de administrador-->
         <div class="py-3 text-center">
           <router-link to="/admin">
+          
             <a href="#">Volver a pagina administrador</a>
           </router-link>
         </div>

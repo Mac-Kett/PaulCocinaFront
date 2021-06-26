@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         carrito : [],
+        busquedas : [],
         pedido : {
             nombre: '',
             apellido: '',
@@ -57,6 +58,10 @@ export default new Vuex.Store({
         },
         login({commit},username,isadmin){
             commit('login',username,isadmin)
+        },
+        cargarBusquedas({commit},elementos){
+            console.log('Entro a actions carga busqueda')
+                commit ('setBusquedas',elementos)
         }
     },
     getters: {
@@ -72,6 +77,7 @@ export default new Vuex.Store({
         }
     },    
     mutations : {
+    
         login(state,username,isadmin){
             state.usuario.esAdmin=isadmin
             state.usuario.nombre=username
@@ -138,5 +144,10 @@ export default new Vuex.Store({
                 p.total = p.quantity * p.price;
             }
         },  
+        setBusquedas(state,busquedas){
+            console.log('Entro a mutations setbusquedas')
+            state.busquedas=busquedas
+        }
+
     }
 })

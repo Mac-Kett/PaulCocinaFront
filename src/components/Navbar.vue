@@ -118,8 +118,6 @@ import Cart from './cart/Cart_List.vue'
 </script>
 
 <style scoped lang="css">
-.src-components-front-navbar {
-}
 .navbar {
   background-color: transparent !important;
 }
