@@ -1,5 +1,4 @@
 <template>
-  <!--TODO probar que ande-->
   <section class="src-components-searchbar p-y1">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div
@@ -7,9 +6,6 @@
         id="navbarNav"
       >
         <ul class="navbar-nav nav-pills ml-auto">
-          <!-- *********************************************** -->
-          <!--FALTA LOGICA PARA LA BUSQUEDA!!!!-->
-          <!-- *********************************************** -->
           <li class="nav-item">
             <form class="form-inline">
               <input
@@ -17,9 +13,6 @@
                 type="search"
                 v-model="query"
               />
-
-              <!--   v-model="query"
-                v-on:input="$emit('query-change', query)"  ESTO ESTABA ADENTRO DEL INPUT -->
               <a
                 class="nav-link btn-danger text-white mr-1"
                 type="submit"
@@ -67,15 +60,6 @@
           path: '/resultadosBusqueda'
         })
       },
-      /*enviarResultados(item){
-        console.log('enviar resultados')
-        console.log(item)
-        this.$router.push({
-        name: 'resultadosBusqueda',
-        params: {item}
-        })
-      },*/
-
     },
     computed: {
 

@@ -30,43 +30,17 @@ import Card from './Card.vue'
     components: {
       Card,
     },
-    props: [/*'item'*/],
+    props: [],
     mounted () {
-
-
-      /*console.log('mounted de busqueda')
-      console.log(this.item)*/
-      //this.cargarDatos()
     },
-      /*beforeRouteUpdate (/to, from, next) {
-     /*this.categoria = this.primerLetraMayus(to.params.categoria)
-      this.cargarDatos()
-      next()
-    },*/
     data () {
       return {
-        /*url: process.env.VUE_APP_API_URL,
-        categoria: this.primerLetraMayus(this.$route.params.categoria),
-        comidas: []*/
-
       }
     },
     methods: {
-      /*cargarDatos(){
-          //ToDo llamar al get con filtro por categoria de la API
-        this.axios.get(`${this.url}recetas/byCategory/${this.categoria}`).then(res => {
-        this.comidas = res.data;
-        });
-      },
-      primerLetraMayus(str){
-        return str.charAt(0).toUpperCase() + str.slice(1)
-      }*/
 
     },
     computed: {
-      /*mostrarResultadosBusquedas(){
-        return this.$store.state.busquedas
-      }*/
       encontrados() {
       return this.$store.state.busquedas;
     }

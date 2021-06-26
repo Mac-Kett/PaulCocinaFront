@@ -51,7 +51,7 @@ const router = new VueRouter({
         { path: '/editrecetas', component: EditRecetas },    
         { path: '/cart', component: CartList},
         { path: '/formReceta', name: 'formReceta',component: FormReceta, props: (route) => ({...route.params}) },
-        { path: '/resultadosBusqueda',component: ResultadosBusqueda/*, props: (route) => ({...route.params})*/ },
+        { path: '/resultadosBusqueda',component: ResultadosBusqueda},
     ]
 })
 

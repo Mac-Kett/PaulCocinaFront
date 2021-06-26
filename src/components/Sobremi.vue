@@ -68,8 +68,6 @@
 </script>
 
 <style scoped lang="css">
-.src-components-front-sobremi {
-}
 h2 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
